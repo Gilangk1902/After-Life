@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private TextView login_Here;
@@ -23,6 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView password_ErrorMsg;
     private EditText confPassword_EditText;
     private TextView confPassword_ErrorMsg;
+    private TextInputLayout textInputLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void InitViews(){

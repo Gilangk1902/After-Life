@@ -67,7 +67,7 @@
             app:layout_constraintGuide_begin="61dp" />
 
         <TextView
-            android:id="@+id/name_TextView"
+            android:id="@+id/nameCountry_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -107,8 +107,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:hint="Enter your password"
-            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -123,7 +121,8 @@
                 android:inputType="textPassword"
                 app:layout_constraintTop_toBottomOf="@+id/password_TextView"
                 tools:layout_editor_absoluteX="32dp"
-                android:paddingVertical="4dp" />
+                android:paddingVertical="4dp"
+                android:hint="Enter your Password"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -144,8 +143,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:hint="Reenter your password"
-            app:hintEnabled="false"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/confirmPassword_TextBox"
             app:passwordToggleEnabled="true"
@@ -155,7 +152,8 @@
                 android:id="@+id/confirmpassword_EditText"
                 android:layout_width="292dp"
                 android:layout_height="40dp"
-                android:paddingVertical="4dp"/>
+                android:paddingVertical="4dp"
+                android:hint="Reenter your password"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -221,17 +219,17 @@
             android:layout_width="292dp"
             android:layout_height="40dp"
             android:layout_marginTop="12dp"
-            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/name_TextView">
+            app:layout_constraintTop_toBottomOf="@+id/nameCountry_TextView">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name_EditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingVertical="4dp" />
+                android:paddingVertical="4dp"
+                android:hint="Enter your Name"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -240,7 +238,6 @@
             android:layout_width="292dp"
             android:layout_height="40dp"
             android:layout_marginTop="12dp"
-            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -250,7 +247,8 @@
                 android:id="@+id/email_EditText_register"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingVertical="4dp"/>
+                android:paddingVertical="4dp"
+                android:hint="Enter your Email "/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView

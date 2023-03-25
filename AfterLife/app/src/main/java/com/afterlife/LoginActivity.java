@@ -6,11 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
     private TextView register_here;
+    private Button login_Btn;
+    private EditText username_EditText;
+    private TextView username_ErrorMsg;
+    private EditText password_EditText;
+    private TextView password_ErrorMsg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +34,25 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        login_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(CustomValidator.NameValidator(username_EditText, username_ErrorMsg) &&
+                CustomValidator.PasswordValidator(password_EditText, password_EditText)){
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     private void InitViews(){
         register_here = findViewById(R.id.register_TextView_link);
+        login_Btn = findViewById(R.id.Login_Button);
+        username_EditText = findViewById(R.id.name_EditText);
+        username_ErrorMsg = findViewById(R.id.name_ErrorMsg);
+        password_EditText = findViewById(R.id.password_EditText);
+        password_ErrorMsg = findViewById(R.id.password_ErrorMSG);
     }
 }

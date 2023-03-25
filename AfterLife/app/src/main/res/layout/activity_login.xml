@@ -121,7 +121,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingVertical="4dp" />
+                    android:paddingVertical="4dp"
+                    android:hint="Enter your Email"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -160,7 +161,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingVertical="4dp" />
+                    android:paddingVertical="4dp"
+                    android:hint="Enter your Password"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
