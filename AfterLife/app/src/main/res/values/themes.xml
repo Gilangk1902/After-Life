@@ -32,5 +32,9 @@
         <item name="android:dropDownSelector">@android:color/white</item>
     </style>
 
+    <style name="funeralCard_style">
+        <item name="cornerRadius">5dp</item>
+    </style>
+
 
 </resources>

@@ -10,9 +10,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:background="@color/background_color">
 
 
+<!-- Top Bar -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header_layout"
             android:layout_width="match_parent"
@@ -118,6 +120,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!-- Select & Add Deceased -->
         <Spinner
             android:id="@+id/spinner3"
             android:layout_width="290dp"
@@ -140,6 +143,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
+<!-- Religion Card -->
         <GridLayout
             android:id="@+id/gridLayout"
             android:layout_width="290dp"
@@ -358,7 +362,9 @@
 
         </GridLayout>
 
+<!-- or Show ALl -->
         <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -379,6 +385,42 @@
                 android:text="Show All"
                 android:textColor="@color/green" />
         </LinearLayout>
+
+<!-- Funeral Homes Near You -->
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="32dp"
+            android:text="Funeral Homes Near You"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+<!-- Show All -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="60dp"
+            android:text="Show All"
+            android:textColor="@color/green"
+            app:layout_constraintBottom_toBottomOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+<!-- Funeral Card Slider-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="292dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:scrollbars="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            android:id="@+id/funeral_RecyclerView">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
