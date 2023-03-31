@@ -1,13 +1,21 @@
 package com.afterlife;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.afterlife.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Funeral> funeralsDataSource = new ArrayList<Funeral>();
     LinearLayoutManager linearLayoutManager;
     FuneralsAdapter funeralAdapter;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +45,11 @@ public class MainActivity extends AppCompatActivity {
         countries.add("Jakarta Selatan");
         countries.add("Tangerang Selatan");
 
-
-
         CountrySpinnerAdapter adapter = new CountrySpinnerAdapter(this, R.layout.countries_spinner_layout, countries);
         spinner.setAdapter(adapter);
+
+        BottomNavigationView_Handler();
+
     }
 
     private void InitFunerals(){
@@ -55,4 +65,20 @@ public class MainActivity extends AppCompatActivity {
                 "Crematorium", "Columbarium", "Memorial Wall"));
 
     }
+
+    private void BottomNavigationView_Handler(){
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId() == R.id.profile_Nav){
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+
+                return true;
+            }
+        });
+    }
+
 }
