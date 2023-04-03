@@ -57,9 +57,13 @@ public class HomePageFragment extends Fragment {
     }
 
     RecyclerView funeralRecyclerView;
-    LinearLayoutManager linearLayoutManager;
+    RecyclerView promoRecyclerView;
+    LinearLayoutManager funeral_linearLayoutManager;
+    LinearLayoutManager promo_linearLayoutManager;
     FuneralsAdapter funeralAdapter;
+    PromoAdapter promoAdapter;
     ArrayList<Funeral> funeralsDataSource = new ArrayList<Funeral>();
+    ArrayList<Promo> promosDataSource = new ArrayList<Promo>();
     List<String> countries = new ArrayList<String>();
     Spinner spinner;
 
@@ -88,9 +92,16 @@ public class HomePageFragment extends Fragment {
 
         funeralRecyclerView = (RecyclerView) view.findViewById(R.id.funeral_RecyclerView);
         funeralAdapter = new FuneralsAdapter(getContext(), funeralsDataSource);
-        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        funeralRecyclerView.setLayoutManager(linearLayoutManager);
+        funeral_linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        funeralRecyclerView.setLayoutManager(funeral_linearLayoutManager);
         funeralRecyclerView.setAdapter(funeralAdapter);
+
+        promoRecyclerView = (RecyclerView) view.findViewById(R.id.promo_recyclerview);
+        promoAdapter = new PromoAdapter(getContext(), promosDataSource);
+        promo_linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        promoRecyclerView.setLayoutManager(promo_linearLayoutManager);
+        promoRecyclerView.setAdapter(promoAdapter);
+
 
         spinner = (Spinner) view.findViewById(R.id.countrySpinner);
         CountrySpinnerAdapter spinnerAdapter = new CountrySpinnerAdapter(getContext(), R.layout.countries_spinner_layout, countries);
@@ -105,5 +116,14 @@ public class HomePageFragment extends Fragment {
 
         countries.add("Jakarta Selatan");
         countries.add("Tangerang Selatan");
+
+        ArrayList<String> features1 = new ArrayList<>();
+        features1.add("feature 1");
+        features1.add("feature 2");
+        promosDataSource.add(new Promo("Standard", 15000000, features1, true));
+        ArrayList<String> features2 = new ArrayList<>();
+        features1.add("feature 1");
+        features1.add("feature 2");
+        promosDataSource.add(new Promo("VIP", 25000000, features2, true));
     }
 }

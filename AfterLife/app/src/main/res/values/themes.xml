@@ -36,5 +36,9 @@
         <item name="cornerRadius">5dp</item>
     </style>
 
+    <style name="promo_card_style">
+        <item name="cornerRadius">18dp</item>
+    </style>
+
 
 </resources>
