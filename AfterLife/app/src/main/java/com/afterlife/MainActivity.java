@@ -1,7 +1,11 @@
 package com.afterlife;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,63 +26,51 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView login;
-    private Spinner spinner;
-    List<String> countries = new ArrayList<String>();
-    RecyclerView funeralRecyclerView;
-    ArrayList<Funeral> funeralsDataSource = new ArrayList<Funeral>();
-    LinearLayoutManager linearLayoutManager;
-    FuneralsAdapter funeralAdapter;
     BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        HideActionBar();
 
-
-        funeralRecyclerView = findViewById(R.id.funeral_RecyclerView);
-        InitFunerals();
-
-        spinner = (Spinner)findViewById(R.id.countrySpinner);
-
-        countries.add("Jakarta Selatan");
-        countries.add("Tangerang Selatan");
-
-        CountrySpinnerAdapter adapter = new CountrySpinnerAdapter(this, R.layout.countries_spinner_layout, countries);
-        spinner.setAdapter(adapter);
+        ReplaceFragment(new HomePageFragment());
 
         BottomNavigationView_Handler();
 
     }
 
-    private void InitFunerals(){
-        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        funeralAdapter = new FuneralsAdapter(MainActivity.this ,funeralsDataSource);
-
-        funeralRecyclerView.setLayoutManager(linearLayoutManager);
-        funeralRecyclerView.setAdapter(funeralAdapter);
-
-        funeralsDataSource.add(new Funeral("Funeral Home Osis Lestari", 4.5f, "Tangerang, Banten", "Chatolic Christian", "Mortuarium",
-                "Crematorium", "Columbarium", "Memorial Wall"));
-        funeralsDataSource.add(new Funeral("Selapajang Jaya Public Cemetery", 4.3f, "Tangerang, Banten", "All Religion", "Mortuarium",
-                "Crematorium", "Columbarium", "Memorial Wall"));
-
-    }
-
     private void BottomNavigationView_Handler(){
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.profile_Nav){
+                if(item.getItemId() == R.id.home_Nav){
+                    ReplaceFragment(new HomePageFragment());
+                }
+                else if(item.getItemId() == R.id.transaction_Nav){
+
+                }
+                else if(item.getItemId() == R.id.profile_Nav){
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
-
                 return true;
             }
         });
     }
 
+    private void HideActionBar(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+    }
+
+    private void ReplaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.commit();
+    }
 }
