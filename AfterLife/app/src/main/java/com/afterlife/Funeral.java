@@ -5,13 +5,14 @@ public class Funeral {
     private float rating;
     private String Location;
     private String religion;
+    private String Url;
 
     private String feature1;
     private String feature2;
     private String feature3;
     private String feature4;
 
-    public Funeral(String name, float rating, String location, String religion, String feature1, String feature2, String feature3, String feature4) {
+    public Funeral(String name, float rating, String location, String religion, String feature1, String feature2, String feature3, String feature4, String Url) {
         this.Name = name;
         this.rating = rating;
         this.Location = location;
@@ -20,6 +21,7 @@ public class Funeral {
         this.feature2 = feature2;
         this.feature3 = feature3;
         this.feature4 = feature4;
+        this.Url = Url;
     }
 
     public String getName() {
@@ -84,5 +86,12 @@ public class Funeral {
 
     public void setFeature4(String feature4) {
         this.feature4 = feature4;
+    }
+
+    public String getUrl(){
+        return Url;
+    }
+    public void setUrl(String url){
+        this.Url = url;
     }
 }

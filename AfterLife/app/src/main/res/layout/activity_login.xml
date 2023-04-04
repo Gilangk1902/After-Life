@@ -122,7 +122,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingVertical="4dp"
-                    android:hint="Enter your Email"/>
+                    android:hint="Enter your Email"
+                    android:id="@+id/email_EditText_login"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -162,7 +163,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingVertical="4dp"
-                    android:hint="Enter your Password"/>
+                    android:hint="Enter your Password"
+                    android:id="@+id/password_EditText_login"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView

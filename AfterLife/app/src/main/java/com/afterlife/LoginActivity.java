@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(CustomValidator.NameValidator(username_EditText, username_ErrorMsg) &&
-                CustomValidator.PasswordValidator(password_EditText, password_EditText)){
+                CustomValidator.PasswordValidator(password_EditText, password_ErrorMsg)){
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
@@ -50,9 +50,9 @@ public class LoginActivity extends AppCompatActivity {
     private void InitViews(){
         register_here = findViewById(R.id.register_TextView_link);
         login_Btn = findViewById(R.id.Login_Button);
-        username_EditText = findViewById(R.id.name_EditText);
-        username_ErrorMsg = findViewById(R.id.name_ErrorMsg);
-        password_EditText = findViewById(R.id.password_EditText);
-        password_ErrorMsg = findViewById(R.id.password_ErrorMSG);
+        username_EditText = findViewById(R.id.email_EditText_login);
+        username_ErrorMsg = findViewById(R.id.email_ErrorMSG_login);
+        password_EditText = findViewById(R.id.password_EditText_login);
+        password_ErrorMsg = findViewById(R.id.password_ErrorMsg_login);
     }
 }

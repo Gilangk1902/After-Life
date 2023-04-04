@@ -110,9 +110,9 @@ public class HomePageFragment extends Fragment {
 
     private void DataInit() {
         funeralsDataSource.add(new Funeral("Funeral Home Osis Lestari", 4.5f, "Tangerang, Banten", "Chatolic Christian", "Mortuarium",
-                "Crematorium", "Columbarium", "Memorial Wall"));
-        funeralsDataSource.add(new Funeral("Selapajang Jaya Public Cemetery", 4.3f, "Tangerang, Banten", "All Religion", "Mortuarium",
-                "Crematorium", "Columbarium", "Memorial Wall"));
+                "Crematorium", "Columbarium", "Memorial Wall", "https://placekitten.com/300/300"));
+        funeralsDataSource.add(new Funeral("Selapajang Jaya Public Cemetery", 4.3f, "Tangerang, Banten", "All Religion", "Public burial complex",
+                "", "", "", "https://res.cloudinary.com/demo/image/upload/s--1tQspuaM--/c_imagga_crop/kitten.jpg"));
 
         countries.add("Jakarta Selatan");
         countries.add("Tangerang Selatan");
