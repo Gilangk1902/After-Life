@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.afterlife.DataClass.DataBase;
 import com.afterlife.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView_Handler();
 
+        DataBase.DataInit();
     }
 
     private void BottomNavigationView_Handler(){

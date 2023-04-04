@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.afterlife.Adapters.CountrySpinnerAdapter;
 import com.afterlife.Adapters.DeceasedSpinnerAdapter;
 import com.afterlife.Adapters.FuneralsAdapter;
 import com.afterlife.Adapters.PromoAdapter;
+import com.afterlife.DataClass.DataBase;
 import com.afterlife.DataClass.Deceased;
 import com.afterlife.DataClass.Funeral;
 import com.afterlife.DataClass.Promo;
@@ -74,11 +76,6 @@ public class HomePageFragment extends Fragment {
     FuneralsAdapter funeralAdapter;
     PromoAdapter promoAdapter;
 
-    ArrayList<Funeral> funeralsDataSource = new ArrayList<Funeral>();
-    ArrayList<Promo> promosDataSource = new ArrayList<Promo>();
-    ArrayList<Deceased> deceasedDataSource = new ArrayList<Deceased>();
-    List<String> countries = new ArrayList<String>();
-
     Spinner spinner;
     Spinner deceased_spinner;
 
@@ -103,61 +100,26 @@ public class HomePageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        DataInit();
-
         funeralRecyclerView = (RecyclerView) view.findViewById(R.id.funeral_RecyclerView);
-        funeralAdapter = new FuneralsAdapter(getContext(), funeralsDataSource);
+        funeralAdapter = new FuneralsAdapter(getContext(), DataBase.funeralsData);
         funeral_linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         funeralRecyclerView.setLayoutManager(funeral_linearLayoutManager);
         funeralRecyclerView.setAdapter(funeralAdapter);
 
         promoRecyclerView = (RecyclerView) view.findViewById(R.id.promo_recyclerview);
-        promoAdapter = new PromoAdapter(getContext(), promosDataSource);
+        promoAdapter = new PromoAdapter(getContext(), DataBase.promosData);
         promo_linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         promoRecyclerView.setLayoutManager(promo_linearLayoutManager);
         promoRecyclerView.setAdapter(promoAdapter);
 
         deceased_spinner = view.findViewById(R.id.deceased_spinner);
-        DeceasedSpinnerAdapter deceasedSpinnerAdapter = new DeceasedSpinnerAdapter(getContext(), R.layout.deceased_spinner_layout, deceasedDataSource);
+        DeceasedSpinnerAdapter deceasedSpinnerAdapter = new DeceasedSpinnerAdapter(getContext(), R.layout.deceased_spinner_layout, DataBase.deceasedData);
         deceased_spinner.setAdapter(deceasedSpinnerAdapter);
 
         spinner = (Spinner) view.findViewById(R.id.countrySpinner);
-        CountrySpinnerAdapter spinnerAdapter = new CountrySpinnerAdapter(getContext(), R.layout.countries_spinner_layout, countries);
+        CountrySpinnerAdapter spinnerAdapter = new CountrySpinnerAdapter(getContext(), R.layout.countries_spinner_layout, DataBase.countries);
         spinner.setAdapter(spinnerAdapter);
     }
 
-    private void DataInit() {
-        funeralsDataSource.add(new Funeral("Funeral Home Osis Lestari", 4.5f, "Tangerang, Banten", "Chatolic Christian", "Mortuarium",
-                "Crematorium", "Columbarium", "Memorial Wall", "https://placekitten.com/300/300"));
-        funeralsDataSource.add(new Funeral("Selapajang Jaya Public Cemetery", 4.3f, "Tangerang, Banten", "All Religion", "Public burial complex",
-                "", "", "", "https://res.cloudinary.com/demo/image/upload/s--1tQspuaM--/c_imagga_crop/kitten.jpg"));
 
-        countries.add("Jakarta Selatan");
-        countries.add("Tangerang Selatan");
-
-        ArrayList<String> features1 = new ArrayList<>();
-        features1.add("Funeral procession according to religion");
-        features1.add("Custom tombstone");
-        features1.add("Consumption for 100 pax");
-        features1.add("Standard wreath of condolences");
-        features1.add("Standard transportation to funeral homes or cemetery");
-        promosDataSource.add(new Promo("Standard", 15000000, features1, true));
-
-        ArrayList<String> features2 = new ArrayList<>();
-        features2.add("Funeral procession according to religion");
-        features2.add("Custom tombstone and decoration");
-        features2.add("Consumption for 250 pax");
-        features2.add("Large wreath of condolences");
-        features2.add("VIP transportation to funeral homes or cemetery");
-        features2.add("Include tents and chair for guest");
-        promosDataSource.add(new Promo("VIP", 25000000, features2, true));
-
-        deceasedDataSource.add(new Deceased("Christian Aiden Wijaya", 123,
-                new GregorianCalendar(1995, Calendar.DECEMBER, 20).getTime(),
-                new GregorianCalendar(2023, Calendar.MARCH, 31).getTime(), "Male", "Chatolic Christian"));
-
-        deceasedDataSource.add(new Deceased("Gilang Kurniawan", 124,
-                new GregorianCalendar(2003, Calendar.FEBRUARY, 19).getTime(),
-                new GregorianCalendar(2023, Calendar.APRIL, 5).getTime(), "Male", "Islam"));
-    }
 }
