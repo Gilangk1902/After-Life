@@ -1,4 +1,4 @@
-package com.afterlife;
+package com.afterlife.DataClass;
 
 import java.util.ArrayList;
 
@@ -33,6 +33,13 @@ public class Promo {
 
     public ArrayList<String> getFeature() {
         return feature;
+    }
+
+    public String getFeature(int position){
+        if(position >= feature.size() || position < 0){
+            return "";
+        }
+        return feature.get(position).toString();
     }
 
     public void setFeature(ArrayList<String> feature) {

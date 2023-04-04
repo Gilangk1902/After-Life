@@ -1,4 +1,4 @@
-package com.afterlife;
+package com.afterlife.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.afterlife.R;
 
 import java.util.List;
 

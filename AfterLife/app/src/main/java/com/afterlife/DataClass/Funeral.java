@@ -1,4 +1,4 @@
-package com.afterlife;
+package com.afterlife.DataClass;
 
 public class Funeral {
     private String Name;

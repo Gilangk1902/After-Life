@@ -1,4 +1,4 @@
-package com.afterlife;
+package com.afterlife.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.afterlife.DataClass.Funeral;
+import com.afterlife.R;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;

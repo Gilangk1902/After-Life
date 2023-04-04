@@ -14,7 +14,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
 
+import com.afterlife.Adapters.CountrySpinnerAdapter;
+import com.afterlife.Adapters.DeceasedSpinnerAdapter;
+import com.afterlife.Adapters.FuneralsAdapter;
+import com.afterlife.Adapters.PromoAdapter;
+import com.afterlife.DataClass.Deceased;
+import com.afterlife.DataClass.Funeral;
+import com.afterlife.DataClass.Promo;
+
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -62,10 +73,14 @@ public class HomePageFragment extends Fragment {
     LinearLayoutManager promo_linearLayoutManager;
     FuneralsAdapter funeralAdapter;
     PromoAdapter promoAdapter;
+
     ArrayList<Funeral> funeralsDataSource = new ArrayList<Funeral>();
     ArrayList<Promo> promosDataSource = new ArrayList<Promo>();
+    ArrayList<Deceased> deceasedDataSource = new ArrayList<Deceased>();
     List<String> countries = new ArrayList<String>();
+
     Spinner spinner;
+    Spinner deceased_spinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,6 +117,9 @@ public class HomePageFragment extends Fragment {
         promoRecyclerView.setLayoutManager(promo_linearLayoutManager);
         promoRecyclerView.setAdapter(promoAdapter);
 
+        deceased_spinner = view.findViewById(R.id.deceased_spinner);
+        DeceasedSpinnerAdapter deceasedSpinnerAdapter = new DeceasedSpinnerAdapter(getContext(), R.layout.deceased_spinner_layout, deceasedDataSource);
+        deceased_spinner.setAdapter(deceasedSpinnerAdapter);
 
         spinner = (Spinner) view.findViewById(R.id.countrySpinner);
         CountrySpinnerAdapter spinnerAdapter = new CountrySpinnerAdapter(getContext(), R.layout.countries_spinner_layout, countries);
@@ -118,12 +136,28 @@ public class HomePageFragment extends Fragment {
         countries.add("Tangerang Selatan");
 
         ArrayList<String> features1 = new ArrayList<>();
-        features1.add("feature 1");
-        features1.add("feature 2");
+        features1.add("Funeral procession according to religion");
+        features1.add("Custom tombstone");
+        features1.add("Consumption for 100 pax");
+        features1.add("Standard wreath of condolences");
+        features1.add("Standard transportation to funeral homes or cemetery");
         promosDataSource.add(new Promo("Standard", 15000000, features1, true));
+
         ArrayList<String> features2 = new ArrayList<>();
-        features1.add("feature 1");
-        features1.add("feature 2");
+        features2.add("Funeral procession according to religion");
+        features2.add("Custom tombstone and decoration");
+        features2.add("Consumption for 250 pax");
+        features2.add("Large wreath of condolences");
+        features2.add("VIP transportation to funeral homes or cemetery");
+        features2.add("Include tents and chair for guest");
         promosDataSource.add(new Promo("VIP", 25000000, features2, true));
+
+        deceasedDataSource.add(new Deceased("Christian Aiden Wijaya", 123,
+                new GregorianCalendar(1995, Calendar.DECEMBER, 20).getTime(),
+                new GregorianCalendar(2023, Calendar.MARCH, 31).getTime(), "Male", "Chatolic Christian"));
+
+        deceasedDataSource.add(new Deceased("Gilang Kurniawan", 124,
+                new GregorianCalendar(2003, Calendar.FEBRUARY, 19).getTime(),
+                new GregorianCalendar(2023, Calendar.APRIL, 5).getTime(), "Male", "Islam"));
     }
 }

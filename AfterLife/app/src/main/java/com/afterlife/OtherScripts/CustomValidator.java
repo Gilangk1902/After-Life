@@ -1,4 +1,4 @@
-package com.afterlife;
+package com.afterlife.OtherScripts;
 
 import android.widget.EditText;
 import android.widget.TextView;

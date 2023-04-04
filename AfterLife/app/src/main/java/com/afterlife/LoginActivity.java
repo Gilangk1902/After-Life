@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.afterlife.OtherScripts.CustomValidator;
+
 public class LoginActivity extends AppCompatActivity {
 
     private TextView register_here;
