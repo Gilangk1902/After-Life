@@ -64,7 +64,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/name_welcome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -94,16 +94,22 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent">
 
-                            <Spinner
-                                android:id="@+id/countrySpinner"
-                                android:layout_width="140dp"
-                                android:layout_height="35dp"
-                                android:layout_marginEnd="40dp"
-                                android:backgroundTint="@color/black"
-                                android:spinnerMode="dialog"
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 app:layout_constraintBottom_toBottomOf="@+id/textInputLayout5"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/textInputLayout5" />
+                                app:layout_constraintTop_toTopOf="@+id/textInputLayout5"
+                                android:background="@drawable/spinner_background"
+                                android:layout_marginEnd="40dp">
+                                <Spinner
+                                    android:id="@+id/countrySpinner"
+                                    android:layout_width="140dp"
+                                    android:layout_height="35dp"
+                                    android:backgroundTint="@color/black"
+                                    android:spinnerMode="dialog" />
+
+                            </RelativeLayout>
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/textInputLayout5"
@@ -128,15 +134,21 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!-- Select & Add Deceased -->
-                <Spinner
-                    android:id="@+id/deceased_spinner"
-                    android:layout_width="290dp"
+                <RelativeLayout
+                    android:id="@+id/deceased_relativeLayout"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/header_layout"
-                    android:spinnerMode="dialog"/>
+                    android:background="@drawable/spinner_background">
+                    <Spinner
+                        android:id="@+id/deceased_spinner"
+                        android:layout_width="290dp"
+                        android:layout_height="35dp"
+                        android:spinnerMode="dialog"/>
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/textView3"
@@ -149,7 +161,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.508"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/deceased_spinner" />
+                    app:layout_constraintTop_toBottomOf="@+id/deceased_relativeLayout" />
 
                 <!-- Religion Card -->
                 <GridLayout

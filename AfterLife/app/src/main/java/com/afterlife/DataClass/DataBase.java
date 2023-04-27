@@ -1,6 +1,7 @@
 package com.afterlife.DataClass;
 
-import java.lang.reflect.Array;
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -9,8 +10,34 @@ public class DataBase {
     public static ArrayList<Funeral> funeralsData = new ArrayList<Funeral>();
     public static ArrayList<Deceased> deceasedData = new ArrayList<>();
     public static ArrayList<Promo> promosData = new ArrayList<>();
-    public static ArrayList<String> countries = new ArrayList<>();
+    public static ArrayList<String> cities = new ArrayList<>();
+    public static ArrayList<User> user = new ArrayList<>();
 
+    public static ArrayList<Integer> dayList = new ArrayList<>();
+    public static ArrayList<Integer> hourList = new ArrayList<>();
+    public static ArrayList<Integer> minuteList = new ArrayList<>();
+    public static ArrayList<Integer> yearList = new ArrayList<>();
+    public static ArrayList<String> monthList = new ArrayList<>();
+
+    public static boolean User_is_email_n_password_match(int position, EditText email, EditText password){
+        if(user.get(position).getEmail().equals(email.getText().toString())
+                && user.get(position).getPassword().equals(password.getText().toString())){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static boolean User_email_is_found_but_password_dont_match(int position, EditText email, EditText password){
+        if(user.get(position).getEmail().equals(email.getText().toString())
+                && !user.get(position).getPassword().equals(password.getText().toString())){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     public static void DataInit() {
         funeralsData.add(new Funeral("Funeral Home Osis Lestari", 4.5f, "Tangerang, Banten", "Chatolic Christian", "Mortuarium",
@@ -18,9 +45,39 @@ public class DataBase {
         funeralsData.add(new Funeral("Selapajang Jaya Public Cemetery", 4.3f, "Tangerang, Banten", "All Religion", "Public burial complex",
                 "", "", "", "https://res.cloudinary.com/demo/image/upload/s--1tQspuaM--/c_imagga_crop/kitten.jpg"));
 
-        countries.add("Jakarta Selatan");
-        countries.add("Tangerang Selatan");
+        cities.add("Jakarta Selatan");
+        cities.add("Tangerang Selatan");
 
+        Init_Promos();
+        Init_DeceasedData();
+        Init_Dates();
+    }
+
+    private static void Assign_Items(ArrayList<Integer> arrayList, int start_value,int end){
+        for(int i=start_value;i<=end;i++){
+            arrayList.add(i);
+        }
+    }
+
+    private static void Init_Dates(){
+        Assign_Items(dayList, 1, 31);
+        Assign_Items(hourList, 0, 24);
+        Assign_Items(minuteList, 0, 60);
+        Assign_Items(yearList, 1940, 2023);
+        Assign_Months();
+    }
+
+    private static void Init_DeceasedData(){
+        deceasedData.add(new Deceased("Christian Aiden Wijaya", 123,
+                new GregorianCalendar(1995, Calendar.DECEMBER, 20).getTime(),
+                new GregorianCalendar(2023, Calendar.MARCH, 31).getTime(), "Male", "Chatolic Christian"));
+
+        deceasedData.add(new Deceased("Gilang Kurniawan", 124,
+                new GregorianCalendar(2003, Calendar.FEBRUARY, 19).getTime(),
+                new GregorianCalendar(2023, Calendar.APRIL, 5).getTime(), "Male", "Islam"));
+    }
+
+    private static void Init_Promos(){
         ArrayList<String> features1 = new ArrayList<>();
         features1.add("Funeral procession according to religion");
         features1.add("Custom tombstone");
@@ -37,13 +94,24 @@ public class DataBase {
         features2.add("VIP transportation to funeral homes or cemetery");
         features2.add("Include tents and chair for guest");
         promosData.add(new Promo("VIP", 25000000, features2, true));
+    }
 
-        deceasedData.add(new Deceased("Christian Aiden Wijaya", 123,
-                new GregorianCalendar(1995, Calendar.DECEMBER, 20).getTime(),
-                new GregorianCalendar(2023, Calendar.MARCH, 31).getTime(), "Male", "Chatolic Christian"));
-
-        deceasedData.add(new Deceased("Gilang Kurniawan", 124,
-                new GregorianCalendar(2003, Calendar.FEBRUARY, 19).getTime(),
-                new GregorianCalendar(2023, Calendar.APRIL, 5).getTime(), "Male", "Islam"));
+    private static void Assign_Months(){
+        String[] months_name = {"January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December"
+                            };
+        for(int i=0;i<months_name.length;i++){
+            monthList.add(months_name[i]);
+        }
     }
 }

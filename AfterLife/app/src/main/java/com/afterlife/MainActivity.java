@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afterlife.DataClass.DataBase;
 import com.afterlife.databinding.ActivityMainBinding;
@@ -37,14 +38,20 @@ public class MainActivity extends AppCompatActivity {
 
         ReplaceFragment(new HomePageFragment());
 
-        BottomNavigationView_Handler();
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        DataBase.DataInit();
+        BottomNavigationView_Handler();
+        BottomNav_itemSelected_changer();
+    }
+
+    @Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+
+        BottomNav_itemSelected_changer();
     }
 
     private void BottomNavigationView_Handler(){
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -52,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
                     ReplaceFragment(new HomePageFragment());
                 }
                 else if(item.getItemId() == R.id.transaction_Nav){
-
+                    Intent intent = new Intent(MainActivity.this, AddDeceasedActivity.class);
+                    startActivity(intent);
                 }
                 else if(item.getItemId() == R.id.profile_Nav){
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -74,5 +82,14 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
+    }
+
+    private void BottomNav_itemSelected_changer(){
+        FragmentManager fragmentManager2 = getSupportFragmentManager();
+        Fragment fragInstance = fragmentManager2.findFragmentById(R.id.frame_layout);
+
+        if(fragInstance instanceof  HomePageFragment){
+            bottomNavigationView.setSelectedItemId(R.id.home_Nav);
+        }
     }
 }

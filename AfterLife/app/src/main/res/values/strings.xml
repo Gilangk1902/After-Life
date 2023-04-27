@@ -4,6 +4,82 @@
         <item>Tangerang selatan</item>
         <item>Jakarta</item>
     </string-array>
+
+    <string-array name="Date">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+
+    <string-array name="Month">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    <string-array name="Gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="Religion">
+        <item>Islam</item>
+        <item>Catholic Christian</item>
+        <item>Christian Protestant</item>
+        <item>Buddha</item>
+        <item>Hindu</item>
+        <item>Confucius</item>
+    </string-array>
+
+    <string-array name="family_guardian_status">
+        <item>Father of the deceased</item>
+        <item>Mother of the deceased</item>
+        <item>Sibling of the deceased</item>
+        <item>Grandfather of the deceased</item>
+        <item>Grandmother of the deceased</item>
+        <item>Uncle of the deceased</item>
+        <item>Aunty of the deceased</item>
+        <item>Cousin of the deceased</item>
+        <item>Acquaintance of the deceased</item>
+        <item>Others</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>>
 </resources>

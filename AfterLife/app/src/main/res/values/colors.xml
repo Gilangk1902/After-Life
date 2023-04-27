@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name ="red">#FF4747</color>
     <color name="green">#609E7B</color>
+    <color name="green_dark">#4B7C60</color>
     <color name="half_trans">#80FFFFFF</color>
     <color name="half_trans_green">#80609E7B</color>
     <color name="orange_start">#FFD976</color>

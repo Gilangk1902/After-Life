@@ -9,26 +9,18 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.afterlife.Adapters.CountrySpinnerAdapter;
 import com.afterlife.Adapters.DeceasedSpinnerAdapter;
 import com.afterlife.Adapters.FuneralsAdapter;
 import com.afterlife.Adapters.PromoAdapter;
 import com.afterlife.DataClass.DataBase;
-import com.afterlife.DataClass.Deceased;
-import com.afterlife.DataClass.Funeral;
-import com.afterlife.DataClass.Promo;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import com.afterlife.DataClass.Session;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,6 +68,8 @@ public class HomePageFragment extends Fragment {
     FuneralsAdapter funeralAdapter;
     PromoAdapter promoAdapter;
 
+    TextView name_welcome;
+
     Spinner spinner;
     Spinner deceased_spinner;
 
@@ -100,6 +94,12 @@ public class HomePageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        InitViews(view);
+        AddSession();
+    }
+
+    private void InitViews(View view){
         funeralRecyclerView = (RecyclerView) view.findViewById(R.id.funeral_RecyclerView);
         funeralAdapter = new FuneralsAdapter(getContext(), DataBase.funeralsData);
         funeral_linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -116,10 +116,19 @@ public class HomePageFragment extends Fragment {
         DeceasedSpinnerAdapter deceasedSpinnerAdapter = new DeceasedSpinnerAdapter(getContext(), R.layout.deceased_spinner_layout, DataBase.deceasedData);
         deceased_spinner.setAdapter(deceasedSpinnerAdapter);
 
+        name_welcome = view.findViewById(R.id.name_welcome);
+
         spinner = (Spinner) view.findViewById(R.id.countrySpinner);
-        CountrySpinnerAdapter spinnerAdapter = new CountrySpinnerAdapter(getContext(), R.layout.countries_spinner_layout, DataBase.countries);
+        CountrySpinnerAdapter spinnerAdapter = new CountrySpinnerAdapter(getContext(), R.layout.countries_spinner_layout, DataBase.cities);
         spinner.setAdapter(spinnerAdapter);
     }
 
-
+    private void AddSession(){
+        if(Session.user != null){
+            name_welcome.setText(Session.user.getName());
+        }
+        else{
+            name_welcome.setText("Guest");
+        }
+    }
 }

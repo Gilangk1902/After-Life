@@ -1,5 +1,6 @@
 package com.afterlife.DataClass;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Deceased {
@@ -39,16 +40,41 @@ public class Deceased {
         return date_of_birth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDate_of_birth(int day, int month, int year) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, day);
+        cal.set(Calendar.MONTH, month);
+        cal.set(Calendar.YEAR, year);
+
+        Date new_date_of_birth = cal.getTime();
+        this.date_of_birth = new_date_of_birth;
+    }
+
+    public void set_step1(String name, int SIN, Calendar birth, Calendar death, String gender, String religion){
+        setName(name);
+        setSIN(SIN);
+        setDate_of_birth(birth.get(Calendar.DAY_OF_MONTH),
+                        birth.get(Calendar.MONTH),
+                        birth.get(Calendar.YEAR));
+        setDate_of_death(death.get(Calendar.DAY_OF_MONTH),
+                        death.get(Calendar.MONTH),
+                        death.get(Calendar.YEAR));
+        setReligion(religion);
+        setGender(gender);
     }
 
     public Date getDate_of_death() {
         return date_of_death;
     }
 
-    public void setDate_of_death(Date date_of_death) {
-        this.date_of_death = date_of_death;
+    public void setDate_of_death(int day, int month, int year) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, day);
+        cal.set(Calendar.MONTH, month);
+        cal.set(Calendar.YEAR, year);
+
+        Date new_date_of_death = cal.getTime();
+        this.date_of_death = new_date_of_death;
     }
 
     public String getGender() {
