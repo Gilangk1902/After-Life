@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/name_deceased_spinner"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:text="Deceased Name"
         android:textSize="13dp"
@@ -35,11 +35,11 @@
         android:id="@+id/date_deceased_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
         android:text="DD/MM/YYYY"
         android:textColor="@color/green"
         android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/name_deceased_spinner"
+        app:layout_constraintTop_toTopOf="@+id/name_deceased_spinner"
+        app:layout_constraintStart_toEndOf="@id/name_deceased_spinner"
+        android:layout_marginLeft="4dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.afterlife;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afterlife.Adapters.CountrySpinnerAdapter;
 import com.afterlife.Adapters.DeceasedSpinnerAdapter;
@@ -73,6 +76,8 @@ public class HomePageFragment extends Fragment {
     Spinner spinner;
     Spinner deceased_spinner;
 
+    Button addmore_btn;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,9 +99,9 @@ public class HomePageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         InitViews(view);
         AddSession();
+        Listeners();
     }
 
     private void InitViews(View view){
@@ -121,6 +126,25 @@ public class HomePageFragment extends Fragment {
         spinner = (Spinner) view.findViewById(R.id.countrySpinner);
         CountrySpinnerAdapter spinnerAdapter = new CountrySpinnerAdapter(getContext(), R.layout.countries_spinner_layout, DataBase.cities);
         spinner.setAdapter(spinnerAdapter);
+
+        addmore_btn = (Button) view.findViewById(R.id.addMore_Btn);
+    }
+
+    private void Listeners(){
+        addmore_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Session.user == null){
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(getActivity(), "You need to Login First", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent intent = new Intent(getActivity() ,AddDeceasedActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     private void AddSession(){

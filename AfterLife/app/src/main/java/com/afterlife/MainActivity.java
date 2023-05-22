@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afterlife.DataClass.DataBase;
+import com.afterlife.DataClass.Session;
 import com.afterlife.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -59,12 +60,18 @@ public class MainActivity extends AppCompatActivity {
                     ReplaceFragment(new HomePageFragment());
                 }
                 else if(item.getItemId() == R.id.transaction_Nav){
-                    Intent intent = new Intent(MainActivity.this, AddDeceasedActivity.class);
-                    startActivity(intent);
+                    if(Session.user == null){
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(MainActivity.this, "You need to Login First", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else if(item.getItemId() == R.id.profile_Nav){
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(intent);
+                    if(Session.user == null){
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(MainActivity.this, "You need to Login First", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 return true;
             }
@@ -76,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.hide();
     }
 
-    private void ReplaceFragment(Fragment fragment){
+    public void ReplaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
