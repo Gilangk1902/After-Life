@@ -456,8 +456,46 @@
 
                 </androidx.recyclerview.widget.RecyclerView>
 
+                <!-- Coffins Near You -->
+                <TextView
+                    android:id="@+id/coffin_near_you_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="32dp"
+                    android:text="Coffins Near You"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/funeral_RecyclerView" />
+
+                <!-- Show All -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="60dp"
+                    android:text="Show All"
+                    android:textColor="@color/green"
+                    app:layout_constraintBottom_toBottomOf="@+id/coffin_near_you_textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/coffin_near_you_textView" />
+
+                <!-- Coffin Card Slider-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/coffin_RecyclerView"
+                    android:layout_width="292dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="70dp"
+                    android:scrollbars="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/coffin_near_you_textView"
+                    app:layout_constraintVertical_bias="0.0"/>
+
                 <!-- Promo Card Slider -->
                 <LinearLayout
+                    android:id="@+id/promo_linearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -465,7 +503,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/funeral_RecyclerView"
+                    app:layout_constraintTop_toBottomOf="@id/coffin_RecyclerView"
                     android:background="@drawable/rating_rectangle">
 
                     <TextView
@@ -484,6 +522,43 @@
                         android:layout_gravity="center"
                         android:id="@+id/promo_recyclerview"/>
                 </LinearLayout>
+
+                <!-- Other appliances -->
+                <TextView
+                    android:id="@+id/other_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="32dp"
+                    android:text="Coffins Near You"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/promo_linearLayout" />
+
+                <!-- Show All -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="60dp"
+                    android:text="Show All"
+                    android:textColor="@color/green"
+                    app:layout_constraintBottom_toBottomOf="@+id/other_textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/other_textView" />
+
+                <!-- Other Card Slider-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/other_cardView"
+                    android:layout_width="292dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="70dp"
+                    android:scrollbars="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/other_textView"
+                    app:layout_constraintVertical_bias="0.0"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </RelativeLayout>

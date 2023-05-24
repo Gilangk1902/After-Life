@@ -30,7 +30,8 @@ public class FuneralsAdapter extends RecyclerView.Adapter<FuneralsAdapter.ViewHo
     @NonNull
     @Override
     public FuneralsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.funeral_card_layout, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.funeral_card_layout,
+                parent, false);
         return new ViewHolder(view);
     }
 
@@ -43,14 +44,17 @@ public class FuneralsAdapter extends RecyclerView.Adapter<FuneralsAdapter.ViewHo
 
         holder.religionIcon.setImageResource(getIcon(funeralsData.get(position).getReligion()));
 
-        holder.feature1.setText(funeralsData.get(position).getFeature1());
-        holder.feature2.setText(funeralsData.get(position).getFeature2());
-        holder.feature3.setText(funeralsData.get(position).getFeature3());
-        holder.feature4.setText(funeralsData.get(position).getFeature4());
+        holder.feature1.setText(funeralsData.get(position).getFeature(0));
+        holder.feature2.setText(funeralsData.get(position).getFeature(1));
+        holder.feature3.setText(funeralsData.get(position).getFeature(2));
+        holder.feature4.setText(funeralsData.get(position).getFeature(3));
 
         Glide.with(context).load(funeralsData.get(position).getUrl()).into(holder.image);
 
-        ShowFeature(holder, funeralsData.get(position).getFeature1(), funeralsData.get(position).getFeature2(), funeralsData.get(position).getFeature3(), funeralsData.get(position).getFeature4());
+        ShowFeature(holder, funeralsData.get(position).getFeature(0),
+                funeralsData.get(position).getFeature(1),
+                funeralsData.get(position).getFeature(2),
+                funeralsData.get(position).getFeature(3));
     }
 
     @Override

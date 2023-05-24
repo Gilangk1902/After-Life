@@ -40,11 +40,26 @@ public class DataBase {
     }
 
     public static void DataInit() {
-        funeralsData.add(new Funeral("Funeral Home Osis Lestari", 4.5f, "Tangerang, Banten", "Chatolic Christian", "Mortuarium",
-                "Crematorium", "Columbarium", "Memorial Wall", "https://placekitten.com/300/300"));
-        funeralsData.add(new Funeral("Selapajang Jaya Public Cemetery", 4.3f, "Tangerang, Banten", "All Religion", "Public burial complex",
-                "", "", "", "https://res.cloudinary.com/demo/image/upload/s--1tQspuaM--/c_imagga_crop/kitten.jpg"));
-
+        funeralsData.add(new Funeral("Funeral Home Oasis Lestarti",
+                4.5f, "", "Christian", 34,
+                "https://placekitten.com/300/300",
+                new ArrayList<String>(){
+                    {
+                        add("Mortuarium");
+                        add("Columbarium");
+                        add("Crematorium");
+                    }
+                }));
+        funeralsData.add(new Funeral("Funeral Home Oasis Lestarti",
+                4.5f, "", "Christian", 34,
+                "https://placekitten.com/300/300",
+                new ArrayList<String>(){
+                    {
+                        add("Mortuarium");
+                        add("Columbarium");
+                        add("Crematorium");
+                    }
+                }));
         cities.add("Jakarta Selatan");
         cities.add("Tangerang Selatan");
 
