@@ -2,14 +2,14 @@ package com.afterlife.DataClass;
 
 import java.util.ArrayList;
 
-public class Coffin extends Purchaseable{
+public class Accessory extends Purchaseable{
     private int price;
     private String detail;
     private String description;
     private ArrayList<String> size;
     private ArrayList<String> design;
 
-    public Coffin(Purchaseable purchaseable, int price, String detail, String description,
+    public Accessory(Purchaseable purchaseable, int price, String detail, String description,
                   ArrayList<String> size, ArrayList<String> design) {
         super(purchaseable.getName(), purchaseable.getRating(), purchaseable.getSold(), purchaseable.getUrl(),
                 purchaseable.getLocation());
@@ -58,4 +58,5 @@ public class Coffin extends Purchaseable{
     public void setDesign(ArrayList<String> design) {
         this.design = design;
     }
+
 }

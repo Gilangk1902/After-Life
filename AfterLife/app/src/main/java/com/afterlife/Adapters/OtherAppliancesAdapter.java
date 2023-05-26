@@ -10,46 +10,45 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.afterlife.DataClass.Accessory;
 import com.afterlife.DataClass.Coffin;
 import com.afterlife.R;
 import com.bumptech.glide.Glide;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-public class CoffinsAdapter extends RecyclerView.Adapter<CoffinsAdapter.ViewHolder> {
+public class OtherAppliancesAdapter extends RecyclerView.Adapter<OtherAppliancesAdapter.ViewHolder>{
     private Context context;
-    private ArrayList<Coffin> coffins = new ArrayList<>();
-    public CoffinsAdapter(Context context, ArrayList<Coffin> coffins){
+    private ArrayList<Accessory> other_appliances = new ArrayList<>();
+    public OtherAppliancesAdapter(Context context, ArrayList<Accessory> other_appliances){
         this.context = context;
-        this.coffins = coffins;
+        this.other_appliances = other_appliances;
     }
 
     @NonNull
     @Override
-    public CoffinsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public OtherAppliancesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.accesories_card_layout,
                 parent, false);
 
-        return new ViewHolder(view);
+        return new OtherAppliancesAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CoffinsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OtherAppliancesAdapter.ViewHolder holder, int position) {
         // set value of holders
-        holder.name.setText(coffins.get(position).getName());
-        holder.location.setText(coffins.get(position).getLocation());
+        holder.name.setText(other_appliances.get(position).getName());
+        holder.location.setText(other_appliances.get(position).getLocation());
         Glide.with(context)
-                .load(coffins.get(position).getUrl())
+                .load(other_appliances.get(position).getUrl())
                 .into(holder.image);
-        holder.rating.setText(String.valueOf(coffins.get(position).getRating()));
-        holder.price.setText("Rp " + String.valueOf(coffins.get(position).getPrice()));
+        holder.rating.setText(String.valueOf(other_appliances.get(position).getRating()));
+        holder.price.setText("Rp " + String.valueOf(other_appliances.get(position).getPrice()));
     }
 
     @Override
     public int getItemCount() {
-        return coffins.size();
+        return other_appliances.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

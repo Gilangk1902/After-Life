@@ -18,9 +18,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afterlife.Adapters.CoffinsAdapter;
 import com.afterlife.Adapters.CountrySpinnerAdapter;
 import com.afterlife.Adapters.DeceasedSpinnerAdapter;
 import com.afterlife.Adapters.FuneralsAdapter;
+import com.afterlife.Adapters.OtherAppliancesAdapter;
 import com.afterlife.Adapters.PromoAdapter;
 import com.afterlife.DataClass.DataBase;
 import com.afterlife.DataClass.Session;
@@ -64,12 +66,14 @@ public class HomePageFragment extends Fragment {
         return fragment;
     }
 
-    RecyclerView funeralRecyclerView;
-    RecyclerView promoRecyclerView;
-    LinearLayoutManager funeral_linearLayoutManager;
-    LinearLayoutManager promo_linearLayoutManager;
+    RecyclerView funeralRecyclerView, promoRecyclerView, coffinRecyclerView,
+            otherAppliancesRecyclerView;
+    LinearLayoutManager funeral_linearLayoutManager, promo_linearLayoutManager,
+            coffin_linearLayoutManager, otherAppliances_linearLayoutManager;
     FuneralsAdapter funeralAdapter;
     PromoAdapter promoAdapter;
+    CoffinsAdapter coffinsAdapter;
+    OtherAppliancesAdapter otherAppliancesAdapter;
 
     TextView name_welcome;
 
@@ -117,6 +121,18 @@ public class HomePageFragment extends Fragment {
         promoRecyclerView.setLayoutManager(promo_linearLayoutManager);
         promoRecyclerView.setAdapter(promoAdapter);
 
+        coffinRecyclerView = (RecyclerView) view.findViewById(R.id.coffin_RecyclerView);
+        coffinsAdapter = new CoffinsAdapter(getContext(), DataBase.coffinsData);
+        coffin_linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        coffinRecyclerView.setLayoutManager(coffin_linearLayoutManager);
+        coffinRecyclerView.setAdapter(coffinsAdapter);
+
+        otherAppliancesRecyclerView = (RecyclerView) view.findViewById(R.id.other_recyclerView);
+        otherAppliancesAdapter = new OtherAppliancesAdapter(getContext(), DataBase.otherAppliancesData);
+        otherAppliances_linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        otherAppliancesRecyclerView.setLayoutManager(otherAppliances_linearLayoutManager);
+        otherAppliancesRecyclerView.setAdapter(otherAppliancesAdapter);
+
         deceased_spinner = view.findViewById(R.id.deceased_spinner);
         DeceasedSpinnerAdapter deceasedSpinnerAdapter = new DeceasedSpinnerAdapter(getContext(), R.layout.deceased_spinner_layout, DataBase.deceasedData);
         deceased_spinner.setAdapter(deceasedSpinnerAdapter);
@@ -128,6 +144,10 @@ public class HomePageFragment extends Fragment {
         spinner.setAdapter(spinnerAdapter);
 
         addmore_btn = (Button) view.findViewById(R.id.addMore_Btn);
+    }
+
+    private void SetAdapter(RecyclerView recyclerView, LinearLayoutManager linearLayoutManager){
+        //recyclerView = (RecyclerView)
     }
 
     private void Listeners(){

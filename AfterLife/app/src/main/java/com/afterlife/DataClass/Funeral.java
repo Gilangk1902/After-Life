@@ -11,8 +11,7 @@ public class Funeral extends Purchaseable{
     public Funeral(String name, float rating, String location, String religion,
                    int sold,String url, ArrayList<String> features)
     {
-        super(name, rating, sold, url);
-        this.Location = location;
+        super(name, rating, sold, url, location);
         this.religion = religion;
         this.features = features;
     }

@@ -12,6 +12,8 @@ public class DataBase {
     public static ArrayList<Promo> promosData = new ArrayList<>();
     public static ArrayList<String> cities = new ArrayList<>();
     public static ArrayList<User> user = new ArrayList<>();
+    public static ArrayList<Coffin> coffinsData = new ArrayList<>();
+    public static ArrayList<Accessory> otherAppliancesData = new ArrayList<>();
 
     public static ArrayList<Integer> dayList = new ArrayList<>();
     public static ArrayList<Integer> hourList = new ArrayList<>();
@@ -66,6 +68,8 @@ public class DataBase {
         Init_Promos();
         Init_DeceasedData();
         Init_Dates();
+        Init_CoffinsData();
+        Init_Accessories();
     }
 
     private static void Assign_Items(ArrayList<Integer> arrayList, int start_value,int end){
@@ -85,11 +89,97 @@ public class DataBase {
     private static void Init_DeceasedData(){
         deceasedData.add(new Deceased("Christian Aiden Wijaya", 123,
                 new GregorianCalendar(1995, Calendar.DECEMBER, 20).getTime(),
-                new GregorianCalendar(2023, Calendar.MARCH, 31).getTime(), "Male", "Chatolic Christian"));
+                new GregorianCalendar(2023, Calendar.MARCH, 31).getTime(),
+                "Male", "Chatolic Christian"));
 
         deceasedData.add(new Deceased("Gilang Kurniawan", 124,
                 new GregorianCalendar(2003, Calendar.FEBRUARY, 19).getTime(),
-                new GregorianCalendar(2023, Calendar.APRIL, 5).getTime(), "Male", "Islam"));
+                new GregorianCalendar(2023, Calendar.APRIL, 5).getTime(),
+                "Male", "Islam"));
+    }
+
+    private static void Init_CoffinsData(){
+        coffinsData.add(new Coffin(
+                new Purchaseable("Fiberboard Jepara Coffin",4.5f, 23,
+                        "https://placekitten.com/300/300", "Tangerang Selatan") ,
+                5000000, "Condition: New\n" +
+                "Unit Weight: 100 - 250g\n" +
+                "Category: Coffin", "",
+                new ArrayList<String>(){
+                    {
+                        add("");
+                        add("");
+                    }
+                },
+                new ArrayList<String>(){
+                    {
+                        add("");
+                        add("");
+                    }
+                }
+        ));
+
+        coffinsData.add(new Coffin(
+                new Purchaseable("Fiberboard Jepara Coffin",4.5f, 23,
+                        "https://placekitten.com/300/300", "Tangerang Selatan") ,
+                5000000, "Condition: New\n" +
+                "Unit Weight: 100 - 250g\n" +
+                "Category: Coffin", "",
+                new ArrayList<String>(){
+                    {
+                        add("");
+                        add("");
+                    }
+                },
+                new ArrayList<String>(){
+                    {
+                        add("");
+                        add("");
+                    }
+                }
+        ));
+    }
+
+    private static void Init_Accessories(){
+        otherAppliancesData.add(new Accessory(
+                new Purchaseable("Fiberboard Jepara Coffin",4.5f, 23,
+                        "https://placekitten.com/300/300", "Tangerang Selatan") ,
+                5000000, "Condition: New\n" +
+                "Unit Weight: 100 - 250g\n" +
+                "Category: Coffin", "",
+                new ArrayList<String>(){
+                    {
+                        add("");
+                        add("");
+                    }
+                },
+                new ArrayList<String>(){
+                    {
+                        add("");
+                        add("");
+                    }
+                }
+        ));
+
+        otherAppliancesData.add(new Accessory(
+                new Purchaseable("Fiberboard Jepara Coffin",4.5f, 23,
+                        "https://placekitten.com/300/300", "Tangerang Selatan") ,
+                5000000, "Condition: New\n" +
+                "Unit Weight: 100 - 250g\n" +
+                "Category: Coffin", "",
+                new ArrayList<String>(){
+                    {
+                        add("");
+                        add("");
+                    }
+                },
+                new ArrayList<String>(){
+                    {
+                        add("");
+                        add("");
+                    }
+                }
+        ));
     }
 
     private static void Init_Promos(){

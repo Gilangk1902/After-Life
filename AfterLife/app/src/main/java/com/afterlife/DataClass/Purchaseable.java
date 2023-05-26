@@ -5,11 +5,13 @@ public class Purchaseable {
     private float rating;
     private int sold;
     private String Url;
+    private String location;
 
-    public Purchaseable(String name, float rating, int sold, String url) {
+    public Purchaseable(String name, float rating, int sold, String url, String location) {
         this.name = name;
         this.rating = rating;
         this.sold = sold;
+        this.location = location;
         Url = url;
     }
 
@@ -43,5 +45,9 @@ public class Purchaseable {
 
     public void setUrl(String url) {
         Url = url;
+    }
+
+    public String getLocation(){
+        return this.location;
     }
 }
