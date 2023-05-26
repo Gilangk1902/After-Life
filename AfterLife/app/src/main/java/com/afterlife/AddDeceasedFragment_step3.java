@@ -90,12 +90,8 @@ public class AddDeceasedFragment_step3 extends Fragment {
             @Override
             public void onClick(View v) {
                 AddDeceasedActivity deceasedActivity = (AddDeceasedActivity)getActivity();
-                try {
-                    deceasedActivity.buttonCreateImageFIle();
-                    deceasedActivity.Step3_Complete();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                //TODO add image path to deceased data
+                deceasedActivity.Finish_Add();
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 startActivity(intent);
             }

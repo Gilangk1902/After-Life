@@ -109,9 +109,7 @@ public class AddDeceasedFragment_step2 extends Fragment {
             public void onClick(View v) {
                 if(CustomValidator.NameValidator(family_phoneNumber, familyname_error_msg)){
                     AddDeceasedActivity deceasedActivity = (AddDeceasedActivity) getActivity();
-                    deceasedActivity.Step2_Complete(family_name.getText().toString(),
-                                                    Integer.valueOf(family_SIN.getText().toString()),
-                                                    Integer.valueOf(family_phoneNumber.getText().toString()));
+                    //TODO
                     deceasedActivity.ReplaceFragment(new AddDeceasedFragment_step3());
                 }
             }

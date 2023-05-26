@@ -62,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isValid()){
-                    DataBase.user.add(new User(name_EditText.getText().toString(), email_EditText.getText().toString(), password_EditText.getText().toString()));
+                    DataBase.userData.add(new User(name_EditText.getText().toString(), email_EditText.getText().toString(), password_EditText.getText().toString()));
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }

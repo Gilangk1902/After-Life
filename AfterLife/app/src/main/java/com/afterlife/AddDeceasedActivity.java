@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,8 +20,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
+import android.provider.DocumentsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +39,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class AddDeceasedActivity extends AppCompatActivity {
 
@@ -52,7 +56,6 @@ public class AddDeceasedActivity extends AppCompatActivity {
         ReplaceFragment(new AddDeceasedFragment_step1());
 
         new_deceased = new Deceased(null, 0, null, null,null,null);
-        FragmentHandler();
 
         ActivityCompat
                 .requestPermissions(this,
@@ -62,23 +65,29 @@ public class AddDeceasedActivity extends AppCompatActivity {
                     PackageManager.PERMISSION_GRANTED);
     }
 
-    public void buttonCreateImageFIle() throws IOException {
+    public void buttonCreateImageFIle(Uri uri) throws IOException {
         StorageManager storageManager = (StorageManager) getSystemService(STORAGE_SERVICE);
         StorageVolume storageVolume = storageManager.getStorageVolumes().get(0);
-        File fileInput = new File(storageVolume.getDirectory().getPath()+"/Download/mr_cat.jpeg");
-        Bitmap bitmapInputImage = BitmapFactory.decodeFile(fileInput.getPath());
 
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmapInputImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        byte[] bytesArray = byteArrayOutputStream.toByteArray();
+        InputStream inputStream = getContentResolver().openInputStream(uri);
+        Bitmap bitmapInputImage = BitmapFactory.decodeStream(inputStream);
 
+        if(bitmapInputImage!=null){
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmapInputImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            byte[] bytesArray = byteArrayOutputStream.toByteArray();
 
-        File fileOutput = new File(storageVolume.getDirectory().getPath() + "/Download/output4.jpeg");
-        FileOutputStream fileOutputStream =  new FileOutputStream(fileOutput);
-        fileOutputStream.write(bytesArray);
-        fileOutputStream.close();
+            File directory = new File(storageVolume.getDirectory().getPath() + "/Download/afterlife_assets");
+            if(!directory.exists()){
+                directory.mkdirs();
+            }
+            File fileOutput = new File(directory, "Test.jpeg");
+            FileOutputStream fileOutputStream =  new FileOutputStream(fileOutput);
+            fileOutputStream.write(bytesArray);
+            fileOutputStream.close();
 
-        image = storageVolume.getDirectory().getPath() + "/Download/output4.jpeg";
+            image = fileOutput.getPath();
+        }
     }
 
     int reqCode = 1;
@@ -86,24 +95,23 @@ public class AddDeceasedActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == reqCode && resultCode == Activity.RESULT_OK){
-            if(data == null){return;}
-            Uri uri = data.getData();
-            //Toast.makeText(this, uri.getPath(), Toast.LENGTH_SHORT).show();
+            if(data != null){
+                Uri uri = data.getData();
+                if(uri != null){
+                    try {
+                        buttonCreateImageFIle(uri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
     }
+
     public void OpenFileChooser(){
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");
         startActivityForResult(intent, reqCode);
-    }
-
-    private void FragmentHandler(){
-        FragmentManager fragmentManager2 = getSupportFragmentManager();
-        Fragment fragInstance = fragmentManager2.findFragmentById(R.id.frame_layout);
-
-        if(fragInstance instanceof  AddDeceasedFragment_step3){
-
-        }
     }
 
     public void ReplaceFragment(Fragment fragment){
@@ -114,19 +122,9 @@ public class AddDeceasedActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void Step1_Complete(String name, int SIN, String gender, String religion){
-//        new_deceased.setName(name);
-//        new_deceased.setSIN(SIN);
-//        new_deceased.setGender(gender);
-//        new_deceased.setReligion(religion);
-//        new_deceased.setDate_of_birth();
-    }
 
-    public void Step2_Complete(String name, int SIN, int number){
 
-    }
-
-    public void Step3_Complete(){
+    public void Finish_Add(){
         DataBase.deceasedData.add(new_deceased);
     }
 }

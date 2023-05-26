@@ -11,7 +11,7 @@ public class DataBase {
     public static ArrayList<Deceased> deceasedData = new ArrayList<>();
     public static ArrayList<Promo> promosData = new ArrayList<>();
     public static ArrayList<String> cities = new ArrayList<>();
-    public static ArrayList<User> user = new ArrayList<>();
+    public static ArrayList<User> userData = new ArrayList<>();
     public static ArrayList<Coffin> coffinsData = new ArrayList<>();
     public static ArrayList<Accessory> otherAppliancesData = new ArrayList<>();
 
@@ -22,8 +22,8 @@ public class DataBase {
     public static ArrayList<String> monthList = new ArrayList<>();
 
     public static boolean User_is_email_n_password_match(int position, EditText email, EditText password){
-        if(user.get(position).getEmail().equals(email.getText().toString())
-                && user.get(position).getPassword().equals(password.getText().toString())){
+        if(userData.get(position).getEmail().equals(email.getText().toString())
+                && userData.get(position).getPassword().equals(password.getText().toString())){
             return true;
         }
         else{
@@ -32,8 +32,8 @@ public class DataBase {
     }
 
     public static boolean User_email_is_found_but_password_dont_match(int position, EditText email, EditText password){
-        if(user.get(position).getEmail().equals(email.getText().toString())
-                && !user.get(position).getPassword().equals(password.getText().toString())){
+        if(userData.get(position).getEmail().equals(email.getText().toString())
+                && !userData.get(position).getPassword().equals(password.getText().toString())){
             return true;
         }
         else{
@@ -64,6 +64,9 @@ public class DataBase {
                 }));
         cities.add("Jakarta Selatan");
         cities.add("Tangerang Selatan");
+
+        userData.add(new User("Gilang",
+                "1@gmail.com", "123"));
 
         Init_Promos();
         Init_DeceasedData();

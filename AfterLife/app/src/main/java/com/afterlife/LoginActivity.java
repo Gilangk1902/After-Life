@@ -55,9 +55,9 @@ public class LoginActivity extends AppCompatActivity {
                 User log_user = new User(null, null, null);
 
                 if(isValid()){
-                    for(int i=0;i< DataBase.user.size();i++){
+                    for(int i = 0; i< DataBase.userData.size(); i++){
                         if(DataBase.User_is_email_n_password_match(i, username_EditText, password_EditText)){
-                            log_user = DataBase.user.get(i);
+                            log_user = DataBase.userData.get(i);
                             userFound = true;
                             break;
                         }
