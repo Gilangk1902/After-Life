@@ -5,10 +5,18 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.afterlife.Adapters.DeceasedCardAdapter;
+import com.afterlife.DataClass.DataBase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,6 +65,14 @@ public class DeceasedListFragment extends Fragment {
         }
     }
 
+    private RecyclerView deceasedRecyclerView;
+    private LinearLayoutManager deceasedLayoutManager;
+    private DeceasedCardAdapter deceasedCardAdapter;
+
+    private ImageView imageView;
+    private TextView deceasedName, liveSpan, pendingMessage;
+    private LinearLayout pendingBox;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -67,6 +83,24 @@ public class DeceasedListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //TODO : InitViews() dll fuvker, this is where u put the code
+        InitViews(view);
+        BindData(view);
     }
+
+    private void InitViews(View view){
+        deceasedRecyclerView = view.findViewById(R.id.deceased_card_RecyclerView);
+        deceasedCardAdapter = new DeceasedCardAdapter(getContext(), DataBase.deceasedData);
+        deceasedLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        SetRecyclerView(deceasedRecyclerView, deceasedLayoutManager, deceasedCardAdapter);
+    }
+    private void BindData(View view){
+        SetRecyclerView(deceasedRecyclerView, deceasedLayoutManager, deceasedCardAdapter);
+    }
+
+    private void SetRecyclerView(RecyclerView recyclerView, LinearLayoutManager linearLayoutManager,
+                                 RecyclerView.Adapter adapter){
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
+    }
+
 }

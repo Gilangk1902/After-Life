@@ -68,12 +68,18 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         Toast.makeText(MainActivity.this, "You need to Login First", Toast.LENGTH_SHORT).show();
                     }
+                    else{
+                        FragmentUtils.ReplaceFragment(fragmentManager, new DeceasedListFragment(), R.id.frame_layout);
+                    }
                 }
                 else if(item.getItemId() == R.id.profile_Nav){
                     if(Session.user == null){
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(intent);
                         Toast.makeText(MainActivity.this, "You need to Login First", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        //TODO : Profile Page
                     }
                 }
                 return true;

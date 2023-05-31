@@ -21,6 +21,8 @@ public class DataBase {
     public static ArrayList<Integer> yearList = new ArrayList<>();
     public static ArrayList<String> monthList = new ArrayList<>();
 
+    //TODO : Make Private dumbass
+
     public static boolean User_is_email_n_password_match(int position, EditText email, EditText password){
         if(userData.get(position).getEmail().equals(email.getText().toString())
                 && userData.get(position).getPassword().equals(password.getText().toString())){
@@ -90,15 +92,15 @@ public class DataBase {
     }
 
     private static void Init_DeceasedData(){
-        deceasedData.add(new Deceased("Christian Aiden Wijaya", 123,
+        deceasedData.add(new Deceased("D001","Christian Aiden Wijaya", 123,
                 new GregorianCalendar(1995, Calendar.DECEMBER, 20).getTime(),
                 new GregorianCalendar(2023, Calendar.MARCH, 31).getTime(),
-                "Male", "Chatolic Christian"));
+                "Male", "Chatolic Christian", "On Document Review"));
 
-        deceasedData.add(new Deceased("Gilang Kurniawan", 124,
+        deceasedData.add(new Deceased("D002","Gilang Kurniawan", 124,
                 new GregorianCalendar(2003, Calendar.FEBRUARY, 19).getTime(),
                 new GregorianCalendar(2023, Calendar.APRIL, 5).getTime(),
-                "Male", "Islam"));
+                "Male", "Islam", "On Document Review"));
     }
 
     private static void Init_CoffinsData(){

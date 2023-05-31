@@ -59,7 +59,7 @@ public class AddDeceasedActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         FragmentUtils.ReplaceFragment(fragmentManager, new AddDeceasedFragment_step1(), R.id.addDeceased_frameLayout);
 
-        new_deceased = new Deceased(null, 0, null, null,null,null);
+        new_deceased = new Deceased(null,null, 0, null, null,null,null, null);
 
         ActivityCompat
                 .requestPermissions(this,

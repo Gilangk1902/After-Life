@@ -4,24 +4,32 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Deceased {
+    private String deceasedId;
     String name;
     int SIN;
     Date date_of_birth;
     Date date_of_death;
     String gender;
     String religion;
+    private String doc;
+    //TODO : Document review status
 
-    public Deceased(String name, int SIN, Date date_of_birth, Date date_of_death, String gender, String religion) {
+    public Deceased(String deceasedId,String name, int SIN, Date date_of_birth, Date date_of_death, String gender, String religion, String doc) {
+        this.deceasedId = deceasedId;
         this.name = name;
         this.SIN = SIN;
         this.date_of_birth = date_of_birth;
         this.date_of_death = date_of_death;
         this.gender = gender;
         this.religion = religion;
+        this.doc = doc;
     }
 
     public String getName() {
         return name;
+    }
+    public String getDoc(){
+        return this.doc;
     }
 
     public void setName(String name) {

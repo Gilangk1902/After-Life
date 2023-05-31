@@ -2,12 +2,14 @@
 <com.google.android.material.card.MaterialCardView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="135dp"
-    android:layout_height="175dp">
+    android:layout_height="175dp"
+    android:layout_margin="10dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/outerLayer_ConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="175dp"
-        android:background="@drawable/roundedcorner_green">
+        android:background="@drawable/roundedcorner_green"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="130dp"
@@ -27,7 +29,8 @@
                 android:src="@drawable/gg_yinyang"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:id="@+id/inMemoryOf_TextView"
