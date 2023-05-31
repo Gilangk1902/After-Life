@@ -33,6 +33,7 @@ import android.widget.Toast;
 import com.afterlife.DataClass.DataBase;
 import com.afterlife.DataClass.Deceased;
 import com.afterlife.DataClass.User;
+import com.afterlife.OtherScripts.FragmentUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -43,9 +44,10 @@ import java.io.InputStream;
 
 public class AddDeceasedActivity extends AppCompatActivity {
 
-    Deceased new_deceased;
-    String name, date_of_death, getDate_of_birth, gender, religion, image;
-    int SIN;
+    private Deceased new_deceased;
+    private FragmentManager fragmentManager;
+    private String name, date_of_death, getDate_of_birth, gender, religion, image;
+    private int SIN;
     //Context context = getApplicationContext();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +55,9 @@ public class AddDeceasedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_deceased);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        ReplaceFragment(new AddDeceasedFragment_step1());
+
+        fragmentManager = getSupportFragmentManager();
+        FragmentUtils.ReplaceFragment(fragmentManager, new AddDeceasedFragment_step1(), R.id.addDeceased_frameLayout);
 
         new_deceased = new Deceased(null, 0, null, null,null,null);
 
@@ -114,17 +118,14 @@ public class AddDeceasedActivity extends AppCompatActivity {
         startActivityForResult(intent, reqCode);
     }
 
-    public void ReplaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.replace(R.id.addDeceased_frameLayout, fragment);
-        fragmentTransaction.commit();
-    }
-
-
-
     public void Finish_Add(){
         DataBase.deceasedData.add(new_deceased);
+    }
+    public Deceased GetDeceased(){
+        return this.new_deceased;
+    }
+
+    public FragmentManager GetFragmentManager(){
+        return this.fragmentManager;
     }
 }

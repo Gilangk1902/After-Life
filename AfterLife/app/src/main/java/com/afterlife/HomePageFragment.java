@@ -68,8 +68,8 @@ public class HomePageFragment extends Fragment {
 
     RecyclerView funeralRecyclerView, promoRecyclerView, coffinRecyclerView,
             otherAppliancesRecyclerView;
-    LinearLayoutManager funeral_linearLayoutManager, promo_linearLayoutManager,
-            coffin_linearLayoutManager, otherAppliances_linearLayoutManager;
+    LinearLayoutManager funeralLinearLayoutManager, promoLinearLayoutManager, coffinLinearLayoutManager,
+            otherAppliancesLinearLayoutManager;
     FuneralsAdapter funeralAdapter;
     PromoAdapter promoAdapter;
     CoffinsAdapter coffinsAdapter;
@@ -109,29 +109,26 @@ public class HomePageFragment extends Fragment {
     }
 
     private void InitViews(View view){
+        funeralLinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        promoLinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        coffinLinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        otherAppliancesLinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+
         funeralRecyclerView = (RecyclerView) view.findViewById(R.id.funeral_RecyclerView);
         funeralAdapter = new FuneralsAdapter(getContext(), DataBase.funeralsData);
-        funeral_linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        funeralRecyclerView.setLayoutManager(funeral_linearLayoutManager);
-        funeralRecyclerView.setAdapter(funeralAdapter);
+        SetRecyclerView(funeralRecyclerView, funeralLinearLayoutManager,funeralAdapter);
 
         promoRecyclerView = (RecyclerView) view.findViewById(R.id.promo_recyclerview);
         promoAdapter = new PromoAdapter(getContext(), DataBase.promosData);
-        promo_linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        promoRecyclerView.setLayoutManager(promo_linearLayoutManager);
-        promoRecyclerView.setAdapter(promoAdapter);
+        SetRecyclerView(promoRecyclerView, promoLinearLayoutManager,promoAdapter);
 
         coffinRecyclerView = (RecyclerView) view.findViewById(R.id.coffin_RecyclerView);
         coffinsAdapter = new CoffinsAdapter(getContext(), DataBase.coffinsData);
-        coffin_linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        coffinRecyclerView.setLayoutManager(coffin_linearLayoutManager);
-        coffinRecyclerView.setAdapter(coffinsAdapter);
+        SetRecyclerView(coffinRecyclerView, coffinLinearLayoutManager,coffinsAdapter);
 
         otherAppliancesRecyclerView = (RecyclerView) view.findViewById(R.id.other_recyclerView);
         otherAppliancesAdapter = new OtherAppliancesAdapter(getContext(), DataBase.otherAppliancesData);
-        otherAppliances_linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        otherAppliancesRecyclerView.setLayoutManager(otherAppliances_linearLayoutManager);
-        otherAppliancesRecyclerView.setAdapter(otherAppliancesAdapter);
+        SetRecyclerView(otherAppliancesRecyclerView, otherAppliancesLinearLayoutManager, otherAppliancesAdapter);
 
         deceased_spinner = view.findViewById(R.id.deceased_spinner);
         DeceasedSpinnerAdapter deceasedSpinnerAdapter = new DeceasedSpinnerAdapter(getContext(), R.layout.deceased_spinner_layout, DataBase.deceasedData);
@@ -146,8 +143,10 @@ public class HomePageFragment extends Fragment {
         addmore_btn = (Button) view.findViewById(R.id.addMore_Btn);
     }
 
-    private void SetAdapter(RecyclerView recyclerView, LinearLayoutManager linearLayoutManager){
-        //recyclerView = (RecyclerView)
+    private void SetRecyclerView(RecyclerView recyclerView, LinearLayoutManager linearLayoutManager,
+                                 RecyclerView.Adapter adapter){
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
     private void Listeners(){

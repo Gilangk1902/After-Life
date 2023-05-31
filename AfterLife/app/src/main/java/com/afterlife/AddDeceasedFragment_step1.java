@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.afterlife.DataClass.DataBase;
 import com.afterlife.OtherScripts.CustomValidator;
+import com.afterlife.OtherScripts.FragmentUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -107,14 +108,15 @@ public class AddDeceasedFragment_step1 extends Fragment {
 
                     Calendar death = Calendar.getInstance();
 
-                    deceasedActivity.new_deceased
+                    deceasedActivity.GetDeceased()
                                     .set_step1(name.getText().toString(),
                                             Integer.valueOf(SIN.getText().toString()),
                                             birth, death,
                                             gender.getSelectedItem().toString(),
                                             religion.getSelectedItem().toString());
 
-                    deceasedActivity.ReplaceFragment(new AddDeceasedFragment_step2());
+                    FragmentUtils.ReplaceFragment(deceasedActivity.GetFragmentManager(),
+                            new AddDeceasedFragment_step2(), R.id.addDeceased_frameLayout);
                 }
             }
         });

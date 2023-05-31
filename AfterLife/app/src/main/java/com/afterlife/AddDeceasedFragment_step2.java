@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.afterlife.OtherScripts.CustomValidator;
+import com.afterlife.OtherScripts.FragmentUtils;
 
 import org.w3c.dom.Text;
 
@@ -101,7 +102,8 @@ public class AddDeceasedFragment_step2 extends Fragment {
             @Override
             public void onClick(View v) {
                 AddDeceasedActivity deceasedActivity = (AddDeceasedActivity) getActivity();
-                deceasedActivity.ReplaceFragment(new AddDeceasedFragment_step1());
+                FragmentUtils.ReplaceFragment(deceasedActivity.GetFragmentManager(),
+                        new AddDeceasedFragment_step1(), R.id.addDeceased_frameLayout);
             }
         });
         next_button.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +112,8 @@ public class AddDeceasedFragment_step2 extends Fragment {
                 if(CustomValidator.NameValidator(family_phoneNumber, familyname_error_msg)){
                     AddDeceasedActivity deceasedActivity = (AddDeceasedActivity) getActivity();
                     //TODO
-                    deceasedActivity.ReplaceFragment(new AddDeceasedFragment_step3());
+                    FragmentUtils.ReplaceFragment(deceasedActivity.GetFragmentManager(),
+                            new AddDeceasedFragment_step3(), R.id.addDeceased_frameLayout);
                 }
             }
         });

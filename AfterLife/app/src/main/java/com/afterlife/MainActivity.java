@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.afterlife.DataClass.DataBase;
 import com.afterlife.DataClass.Session;
+import com.afterlife.OtherScripts.FragmentUtils;
 import com.afterlife.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -30,6 +31,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+    FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         HideActionBar();
 
-        ReplaceFragment(new HomePageFragment());
+        fragmentManager = getSupportFragmentManager();
+        FragmentUtils.ReplaceFragment(fragmentManager, new HomePageFragment(), R.id.frame_layout);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.home_Nav){
-                    ReplaceFragment(new HomePageFragment());
+                    FragmentUtils.ReplaceFragment(fragmentManager, new HomePageFragment(), R.id.frame_layout);
                 }
                 else if(item.getItemId() == R.id.transaction_Nav){
                     if(Session.user == null){
@@ -81,14 +84,6 @@ public class MainActivity extends AppCompatActivity {
     private void HideActionBar(){
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-    }
-
-    public void ReplaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.commit();
     }
 
     private void BottomNav_itemSelected_changer(){
