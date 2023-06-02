@@ -42,10 +42,11 @@ public class DeceasedCardAdapter extends RecyclerView.Adapter<DeceasedCardAdapte
                 .setReligionIcon(deceasedList.get(position).getReligion().toString()));
         holder.deceasedName.setText(deceasedList.get(position).getName());
         holder.pendingMessage.setText(deceasedList.get(position).getDoc());
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        holder.liveSpan.setText(dateFormat.format(deceasedList.get(position).getDate_of_death())
+        holder.liveSpan.setText(dateFormat.format(deceasedList.get(position).getDate_of_birth())
                 + " - " + dateFormat.format(deceasedList.get(position).getDate_of_death()));
-        holder.pendingMessage.setText("IDK");
+        holder.pendingMessage.setText(deceasedList.get(position).getDoc());
     }
 
     @Override

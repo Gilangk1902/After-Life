@@ -1,5 +1,6 @@
 package com.afterlife.DataClass;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -12,9 +13,9 @@ public class Deceased {
     String gender;
     String religion;
     private String doc;
-    //TODO : Document review status
 
-    public Deceased(String deceasedId,String name, int SIN, Date date_of_birth, Date date_of_death, String gender, String religion, String doc) {
+    public Deceased(String deceasedId,String name, int SIN, Date date_of_birth,
+                    Date date_of_death, String gender, String religion, String doc) {
         this.deceasedId = deceasedId;
         this.name = name;
         this.SIN = SIN;

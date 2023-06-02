@@ -67,14 +67,25 @@ public class DataBase {
         cities.add("Jakarta Selatan");
         cities.add("Tangerang Selatan");
 
-        userData.add(new User("Gilang",
-                "1@gmail.com", "123"));
-
         Init_Promos();
         Init_DeceasedData();
         Init_Dates();
         Init_CoffinsData();
         Init_Accessories();
+        Init_Users();
+    }
+
+    private static void Init_Users(){
+        Address address = new Address("Home", "John Doe",
+                "6289508699149", "Serpong Village S1/2, Serpong, Ciputat, Tangerang Selatan, Banten...");
+        userData.add(new User("Gilang",
+                "1@gmail.com", "123",
+                new ArrayList<Address>(){
+                    {
+                        add(address);
+                        add(address);
+                    }
+                }));
     }
 
     private static void Assign_Items(ArrayList<Integer> arrayList, int start_value,int end){

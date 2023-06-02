@@ -1,4 +1,4 @@
-package com.afterlife;
+package com.afterlife.Activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,7 @@ import com.afterlife.DataClass.DataBase;
 import com.afterlife.DataClass.Session;
 import com.afterlife.DataClass.User;
 import com.afterlife.OtherScripts.CustomValidator;
+import com.afterlife.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
@@ -52,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean userFound = false;
                 boolean emailFound = false;
-                User log_user = new User(null, null, null);
+                User log_user = new User(null, null, null, null);
 
                 if(isValid()){
                     for(int i = 0; i< DataBase.userData.size(); i++){

@@ -1,4 +1,4 @@
-package com.afterlife;
+package com.afterlife.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,9 +17,12 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.afterlife.Activity.AddDeceasedActivity;
+import com.afterlife.Activity.MainActivity;
 import com.afterlife.DataClass.DataBase;
 import com.afterlife.OtherScripts.CustomValidator;
 import com.afterlife.OtherScripts.FragmentUtils;
+import com.afterlife.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;

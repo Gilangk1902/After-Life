@@ -1,4 +1,4 @@
-package com.afterlife;
+package com.afterlife.Activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.afterlife.DataClass.DataBase;
 import com.afterlife.DataClass.User;
 import com.afterlife.OtherScripts.CustomValidator;
+import com.afterlife.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -62,7 +63,9 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isValid()){
-                    DataBase.userData.add(new User(name_EditText.getText().toString(), email_EditText.getText().toString(), password_EditText.getText().toString()));
+                    DataBase.userData.add(new User(name_EditText.getText().toString(),
+                            email_EditText.getText().toString(), password_EditText.getText().toString(),
+                            null));
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }

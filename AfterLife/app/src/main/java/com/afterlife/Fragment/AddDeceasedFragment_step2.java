@@ -1,4 +1,4 @@
-package com.afterlife;
+package com.afterlife.Fragment;
 
 import android.os.Bundle;
 
@@ -15,10 +15,10 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.afterlife.Activity.AddDeceasedActivity;
 import com.afterlife.OtherScripts.CustomValidator;
 import com.afterlife.OtherScripts.FragmentUtils;
-
-import org.w3c.dom.Text;
+import com.afterlife.R;
 
 /**
  * A simple {@link Fragment} subclass.

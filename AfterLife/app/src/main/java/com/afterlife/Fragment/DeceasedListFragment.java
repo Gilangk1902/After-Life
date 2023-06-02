@@ -1,4 +1,4 @@
-package com.afterlife;
+package com.afterlife.Fragment;
 
 import android.os.Bundle;
 
@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.afterlife.Adapters.DeceasedCardAdapter;
 import com.afterlife.DataClass.DataBase;
+import com.afterlife.R;
 
 /**
  * A simple {@link Fragment} subclass.

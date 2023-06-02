@@ -1,4 +1,4 @@
-package com.afterlife;
+package com.afterlife.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afterlife.Activity.AddDeceasedActivity;
+import com.afterlife.Activity.LoginActivity;
 import com.afterlife.Adapters.CoffinsAdapter;
 import com.afterlife.Adapters.CountrySpinnerAdapter;
 import com.afterlife.Adapters.DeceasedSpinnerAdapter;
@@ -26,6 +28,7 @@ import com.afterlife.Adapters.OtherAppliancesAdapter;
 import com.afterlife.Adapters.PromoAdapter;
 import com.afterlife.DataClass.DataBase;
 import com.afterlife.DataClass.Session;
+import com.afterlife.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -159,7 +162,7 @@ public class HomePageFragment extends Fragment {
                     Toast.makeText(getActivity(), "You need to Login First", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Intent intent = new Intent(getActivity() ,AddDeceasedActivity.class);
+                    Intent intent = new Intent(getActivity() , AddDeceasedActivity.class);
                     startActivity(intent);
                 }
             }

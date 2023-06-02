@@ -1,32 +1,24 @@
-package com.afterlife;
+package com.afterlife.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afterlife.DataClass.DataBase;
 import com.afterlife.DataClass.Session;
+import com.afterlife.Fragment.DeceasedListFragment;
+import com.afterlife.Fragment.HomePageFragment;
+import com.afterlife.Fragment.ProfilePageFragment;
 import com.afterlife.OtherScripts.FragmentUtils;
-import com.afterlife.databinding.ActivityMainBinding;
+import com.afterlife.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -79,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "You need to Login First", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        //TODO : Profile Page
+                        FragmentUtils.ReplaceFragment(fragmentManager, new ProfilePageFragment(), R.id.frame_layout);
                     }
                 }
                 return true;
