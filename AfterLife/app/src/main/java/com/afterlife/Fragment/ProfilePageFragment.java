@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afterlife.Adapters.AddressCardAdapter;
+import com.afterlife.DataClass.DataBase;
 import com.afterlife.DataClass.Session;
 import com.afterlife.R;
 import com.bumptech.glide.Glide;
@@ -61,6 +65,9 @@ public class ProfilePageFragment extends Fragment {
 
     private TextView name_TextView, email_TextView;
     private ImageView profilePicture;
+    private RecyclerView address_RecyclerView;
+    private AddressCardAdapter addressCardAdapter;
+    private LinearLayoutManager addresses_LinearLayoutManager;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -69,6 +76,7 @@ public class ProfilePageFragment extends Fragment {
 
         if(Session.user != null){
             BindData();
+            InitRecyclerView();
         }
     }
 
@@ -80,9 +88,23 @@ public class ProfilePageFragment extends Fragment {
                 .into(profilePicture);
     }
 
+    private void InitRecyclerView(){
+        addressCardAdapter = new AddressCardAdapter(getContext(), Session.user.getAddresses());
+        address_RecyclerView.setAdapter(addressCardAdapter);
+        addresses_LinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        SetRecyclerView(address_RecyclerView, addresses_LinearLayoutManager, addressCardAdapter);
+    }
+
+    private void SetRecyclerView(RecyclerView recyclerView, LinearLayoutManager linearLayoutManager,
+                                 RecyclerView.Adapter adapter){
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
+    }
+
     private void InitViews(View view){
         name_TextView = view.findViewById(R.id.profile_name_TextView);
         email_TextView = view.findViewById(R.id.profile_email_TextView);
         profilePicture = view.findViewById(R.id.profile_picture);
+        address_RecyclerView = view.findViewById(R.id.addressList_RecyclerView);
     }
 }
