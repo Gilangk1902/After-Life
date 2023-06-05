@@ -1,5 +1,17 @@
 package com.afterlife.DataClass;
 
 public class Session {
-    public static User user;
+    private static User user;
+    public Session(){
+    }
+    public static void Login(User newUser){
+        user = newUser;
+    }
+    public static void Logout(){
+        user = null;
+    }
+
+    public static User getUser(){
+        return user;
+    }
 }

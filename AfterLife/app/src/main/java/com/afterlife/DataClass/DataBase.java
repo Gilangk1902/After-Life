@@ -79,7 +79,7 @@ public class DataBase {
         Address address = new Address("Home", "John Doe",
                 "6289508699149", "Serpong Village S1/2, Serpong, Ciputat, Tangerang Selatan, Banten...");
         userData.add(new User("Gilang",
-                "1@gmail.com", "123",
+                "1@gmail.com", "123", "https://placekitten.com/300/300",
                 new ArrayList<Address>(){
                     {
                         add(address);

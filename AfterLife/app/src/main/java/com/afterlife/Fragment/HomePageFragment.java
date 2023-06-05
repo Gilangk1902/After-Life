@@ -156,7 +156,7 @@ public class HomePageFragment extends Fragment {
         addmore_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Session.user == null){
+                if(Session.getUser() == null){
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                     Toast.makeText(getActivity(), "You need to Login First", Toast.LENGTH_SHORT).show();
@@ -170,8 +170,8 @@ public class HomePageFragment extends Fragment {
     }
 
     private void AddSession(){
-        if(Session.user != null){
-            name_welcome.setText(Session.user.getName());
+        if(Session.getUser() != null){
+            name_welcome.setText(Session.getUser().getName());
         }
         else{
             name_welcome.setText("Guest");

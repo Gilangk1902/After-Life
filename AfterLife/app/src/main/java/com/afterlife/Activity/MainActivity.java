@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     FragmentUtils.ReplaceFragment(fragmentManager, new HomePageFragment(), R.id.frame_layout);
                 }
                 else if(item.getItemId() == R.id.transaction_Nav){
-                    if(Session.user == null){
+                    if(Session.getUser() == null){
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(intent);
                         Toast.makeText(MainActivity.this, "You need to Login First", Toast.LENGTH_SHORT).show();
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 else if(item.getItemId() == R.id.profile_Nav){
-                    if(Session.user == null){
+                    if(Session.getUser() == null){
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(intent);
                         Toast.makeText(MainActivity.this, "You need to Login First", Toast.LENGTH_SHORT).show();

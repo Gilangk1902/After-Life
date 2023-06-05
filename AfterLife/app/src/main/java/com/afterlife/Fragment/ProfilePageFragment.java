@@ -1,22 +1,27 @@
 package com.afterlife.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afterlife.Activity.MainActivity;
 import com.afterlife.Adapters.AddressCardAdapter;
 import com.afterlife.DataClass.DataBase;
 import com.afterlife.DataClass.Session;
+import com.afterlife.OtherScripts.FragmentUtils;
 import com.afterlife.R;
 import com.bumptech.glide.Glide;
 
@@ -68,28 +73,43 @@ public class ProfilePageFragment extends Fragment {
     private RecyclerView address_RecyclerView;
     private AddressCardAdapter addressCardAdapter;
     private LinearLayoutManager addresses_LinearLayoutManager;
+    private Button logOut_Button;
+    private FragmentManager fragmentManager;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         InitViews(view);
+        Listeners();
+        fragmentManager = getActivity().getSupportFragmentManager();
 
-        if(Session.user != null){
+        if(Session.getUser() != null){
             BindData();
             InitRecyclerView();
         }
     }
 
+    private void Listeners(){
+        logOut_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Session.Logout();
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
     private void BindData(){
-        name_TextView.setText(Session.user.getName());
-        email_TextView.setText(Session.user.getEmail());
-        Glide.with(this)
-                .load("http://placekitten.com/300/300")
+        name_TextView.setText(Session.getUser().getName());
+        email_TextView.setText(Session.getUser().getEmail());
+        Glide.with(getContext() )
+                .load(Session.getUser().getProfilePic())
                 .into(profilePicture);
     }
 
     private void InitRecyclerView(){
-        addressCardAdapter = new AddressCardAdapter(getContext(), Session.user.getAddresses());
+        addressCardAdapter = new AddressCardAdapter(getContext(), Session.getUser().getAddresses());
         address_RecyclerView.setAdapter(addressCardAdapter);
         addresses_LinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         SetRecyclerView(address_RecyclerView, addresses_LinearLayoutManager, addressCardAdapter);
@@ -106,5 +126,6 @@ public class ProfilePageFragment extends Fragment {
         email_TextView = view.findViewById(R.id.profile_email_TextView);
         profilePicture = view.findViewById(R.id.profile_picture);
         address_RecyclerView = view.findViewById(R.id.addressList_RecyclerView);
+        logOut_Button = view.findViewById(R.id.logout_Button);
     }
 }

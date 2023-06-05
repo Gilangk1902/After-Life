@@ -6,13 +6,15 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private String profilePic;
     private ArrayList<Address> addresses = new ArrayList<>();
 
-    public User(String name, String email, String password, ArrayList<Address> addresses) {
+    public User(String name, String email, String password, String profilePic,ArrayList<Address> addresses) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.addresses = addresses;
+        this.profilePic = profilePic;
     }
 
     public String getName() {
@@ -41,5 +43,8 @@ public class User {
 
     public ArrayList<Address> getAddresses(){
         return this.addresses;
+    }
+    public String getProfilePic(){
+        return this.profilePic;
     }
 }

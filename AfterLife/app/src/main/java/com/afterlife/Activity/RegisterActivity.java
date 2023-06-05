@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if(isValid()){
                     DataBase.userData.add(new User(name_EditText.getText().toString(),
                             email_EditText.getText().toString(), password_EditText.getText().toString(),
-                            null));
+                            "https://placekitten.com/300/300", null));
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
