@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afterlife.Activity.EditProfileActivity;
 import com.afterlife.Activity.MainActivity;
 import com.afterlife.Adapters.AddressCardAdapter;
 import com.afterlife.DataClass.DataBase;
@@ -31,8 +32,6 @@ import com.bumptech.glide.Glide;
  * create an instance of this fragment.
  */
 public class ProfilePageFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -42,7 +41,6 @@ public class ProfilePageFragment extends Fragment {
     public ProfilePageFragment() {
         // Required empty public constructor
     }
-    // TODO: Rename and change types and number of parameters
     public static ProfilePageFragment newInstance(String param1, String param2) {
         ProfilePageFragment fragment = new ProfilePageFragment();
         Bundle args = new Bundle();
@@ -73,7 +71,7 @@ public class ProfilePageFragment extends Fragment {
     private RecyclerView address_RecyclerView;
     private AddressCardAdapter addressCardAdapter;
     private LinearLayoutManager addresses_LinearLayoutManager;
-    private Button logOut_Button;
+    private Button logOut_Button, editProfile_Button;
     private FragmentManager fragmentManager;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -85,7 +83,6 @@ public class ProfilePageFragment extends Fragment {
 
         if(Session.getUser() != null){
             BindData();
-            InitRecyclerView();
         }
     }
 
@@ -98,6 +95,13 @@ public class ProfilePageFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        editProfile_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void BindData(){
@@ -106,6 +110,7 @@ public class ProfilePageFragment extends Fragment {
         Glide.with(getContext() )
                 .load(Session.getUser().getProfilePic())
                 .into(profilePicture);
+        InitRecyclerView();
     }
 
     private void InitRecyclerView(){
@@ -127,5 +132,6 @@ public class ProfilePageFragment extends Fragment {
         profilePicture = view.findViewById(R.id.profile_picture);
         address_RecyclerView = view.findViewById(R.id.addressList_RecyclerView);
         logOut_Button = view.findViewById(R.id.logout_Button);
+        editProfile_Button = view.findViewById(R.id.editProfile_Button);
     }
 }

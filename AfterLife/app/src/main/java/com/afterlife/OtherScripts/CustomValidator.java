@@ -64,5 +64,15 @@ public class CustomValidator {
         }
     }
 
-
+    public static Boolean EmptyValidator(EditText editText, TextView errorMessage){
+        if(editText.getText().toString().length() == 0){
+            errorMessage.setText("Empty");
+            errorMessage.setTextColor(Color.RED);
+            return false;
+        }
+        else{
+            errorMessage.setText("");
+            return true;
+        }
+    }
 }

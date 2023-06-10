@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         HideActionBar();
 
         fragmentManager = getSupportFragmentManager();
-        FragmentUtils.ReplaceFragment(fragmentManager, new HomePageFragment(), R.id.frame_layout);
+        Fragment homePageFragment = HomePageFragment.newInstance("", "");
+        FragmentUtils.ReplaceFragment(fragmentManager, homePageFragment, R.id.frame_layout);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
@@ -52,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.home_Nav){
-                    FragmentUtils.ReplaceFragment(fragmentManager, new HomePageFragment(), R.id.frame_layout);
+                    Fragment homePageFragment = HomePageFragment.newInstance("", "");
+                    FragmentUtils.ReplaceFragment(fragmentManager, homePageFragment, R.id.frame_layout);
                 }
                 else if(item.getItemId() == R.id.transaction_Nav){
                     if(Session.getUser() == null){

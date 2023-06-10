@@ -27,35 +27,14 @@ import com.afterlife.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddDeceasedFragment_step1#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AddDeceasedFragment_step1 extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
+    private static String ARG_PARAM1 = "param1";
+    private static String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
-
     public AddDeceasedFragment_step1() {
-        // Required empty public constructor
-    }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AddDeceasedFragment_step1.
-     */
-    // TODO: Rename and change types and number of parameters
+    }
     public static AddDeceasedFragment_step1 newInstance(String param1, String param2) {
         AddDeceasedFragment_step1 fragment = new AddDeceasedFragment_step1();
         Bundle args = new Bundle();
@@ -64,8 +43,6 @@ public class AddDeceasedFragment_step1 extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
-
     Spinner day, month, year, hour, minute, gender, religion;
     EditText name, SIN;
     TextView name_error_msg, SIN_error_msg;
@@ -149,9 +126,10 @@ public class AddDeceasedFragment_step1 extends Fragment {
         year.setAdapter(MakeAdapter(DataBase.yearList));
         hour.setAdapter(MakeAdapter(DataBase.hourList));
         minute.setAdapter(MakeAdapter(DataBase.minuteList));
-        ArrayAdapter<String> string_Adapter = new ArrayAdapter<String>(getActivity(),
-                                                                        androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                                                                        DataBase.monthList);
+        ArrayAdapter<String> string_Adapter =
+                new ArrayAdapter<String>(getActivity(),
+                        androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                        DataBase.monthList);
         month.setAdapter(string_Adapter);
 
         next_btn = view.findViewById(R.id.next_button_addDeceased);

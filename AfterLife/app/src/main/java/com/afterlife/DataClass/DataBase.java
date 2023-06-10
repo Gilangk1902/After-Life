@@ -4,6 +4,7 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class DataBase {
@@ -20,6 +21,10 @@ public class DataBase {
     public static ArrayList<Integer> minuteList = new ArrayList<>();
     public static ArrayList<Integer> yearList = new ArrayList<>();
     public static ArrayList<String> monthList = new ArrayList<>();
+
+    public static ArrayList<String> religionList = new ArrayList<>();
+
+    public static ArrayList<String> genderList = new ArrayList<>();
 
     //TODO : Make Private dumbass
 
@@ -73,9 +78,15 @@ public class DataBase {
         Init_CoffinsData();
         Init_Accessories();
         Init_Users();
+        Assign_Religion();
+        Assign_Gender();
+        Assign_Months();
     }
 
     private static void Init_Users(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2003, 2, 19);
+        Date DOB = calendar.getTime();
         Address address = new Address("Home", "John Doe",
                 "6289508699149", "Serpong Village S1/2, Serpong, Ciputat, Tangerang Selatan, Banten...");
         userData.add(new User("Gilang",
@@ -85,7 +96,7 @@ public class DataBase {
                         add(address);
                         add(address);
                     }
-                }));
+                }, "1234", "Hinduism", "Male", DOB));
     }
 
     private static void Assign_Items(ArrayList<Integer> arrayList, int start_value,int end){
@@ -234,5 +245,15 @@ public class DataBase {
         for(int i=0;i<months_name.length;i++){
             monthList.add(months_name[i]);
         }
+    }
+
+    private static void Assign_Religion(){
+        religionList.add("Islam");
+        religionList.add("Hinduism");
+        religionList.add("Buddhism");
+    }
+    private static void Assign_Gender(){
+        genderList.add("Female");
+        genderList.add("Male");
     }
 }

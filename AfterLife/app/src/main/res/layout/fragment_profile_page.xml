@@ -49,6 +49,7 @@
                         app:layout_constraintStart_toEndOf="@+id/profile_picture"/>
                     
                     <Button
+                        android:id="@+id/editProfile_Button"
                         android:layout_width="292dp"
                         android:layout_height="35dp"
                         android:text="Edit Profile"

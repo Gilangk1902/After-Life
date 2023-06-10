@@ -53,7 +53,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean userFound = false;
                 boolean emailFound = false;
-                User log_user = new User(null, null, null, null, null);
+                User log_user = new User(null, null, null, null, null,
+                        null, null, null, null);
 
                 if(isValid()){
                     for(int i = 0; i< DataBase.userData.size(); i++){

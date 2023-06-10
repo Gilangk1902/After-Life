@@ -37,7 +37,6 @@ public class AddDeceasedActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private String name, date_of_death, getDate_of_birth, gender, religion, image;
     private int SIN;
-    //Context context = getApplicationContext();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
