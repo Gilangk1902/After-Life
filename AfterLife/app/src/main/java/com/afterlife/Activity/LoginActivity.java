@@ -17,6 +17,8 @@ import com.afterlife.DataClass.User;
 import com.afterlife.OtherScripts.CustomValidator;
 import com.afterlife.R;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -85,6 +87,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private boolean IsDataExist(String email, String password){
+        //DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("User").child("Customer").
+        return false;
     }
 
     @Override

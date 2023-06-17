@@ -26,6 +26,7 @@ import com.afterlife.Adapters.DeceasedSpinnerAdapter;
 import com.afterlife.Adapters.FuneralsAdapter;
 import com.afterlife.Adapters.OtherAppliancesAdapter;
 import com.afterlife.Adapters.PromoAdapter;
+import com.afterlife.DataBaseHandler.UserHandler;
 import com.afterlife.DataClass.DataBase;
 import com.afterlife.DataClass.Session;
 import com.afterlife.R;
@@ -170,11 +171,12 @@ public class HomePageFragment extends Fragment {
     }
 
     private void AddSession(){
-        if(Session.getUser() != null){
-            name_welcome.setText(Session.getUser().getName());
-        }
-        else{
-            name_welcome.setText("Guest");
-        }
+        UserHandler.test_getName(name_welcome);
+//        if(Session.getUser() != null){
+//            UserHandler.test_getName(name_welcome);
+//        }
+//        else{
+//            UserHandler.test_getName(name_welcome);
+//        }
     }
 }

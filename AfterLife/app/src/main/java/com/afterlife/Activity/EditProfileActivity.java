@@ -27,11 +27,11 @@ public class EditProfileActivity extends AppCompatActivity {
     private Spinner day, month, year, gender, religion;
     private Button saveButton;
     private TextView errorMessage;
-    ArrayAdapter<Integer> dayAdapter;
-    ArrayAdapter<String> monthAdapter;
-    ArrayAdapter<Integer> yearAdapter;
-    ArrayAdapter<String> genderAdapter;
-    ArrayAdapter<String> religionAdapter;
+    private ArrayAdapter<Integer> dayAdapter;
+    private ArrayAdapter<String> monthAdapter;
+    private ArrayAdapter<Integer> yearAdapter;
+    private ArrayAdapter<String> genderAdapter;
+    private ArrayAdapter<String> religionAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +55,8 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+
     private void ChangeUserAttributes(User user){
         User newUser = new User(name.getText().toString(), email.getText().toString(),
                 user.getPassword(), user.getProfilePic(), user.getAddresses(),
