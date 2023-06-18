@@ -67,7 +67,7 @@ public class EditProfileActivity extends AppCompatActivity {
         user.setGender(newUser.getGender());
         user.setReligion(newUser.getReligion());
         user.setSIN(newUser.getSIN());
-        //TODO : FINISH THIS LAZY CUNT
+        //TODO : FINISH THIS
     }
 
     private boolean isValid(){

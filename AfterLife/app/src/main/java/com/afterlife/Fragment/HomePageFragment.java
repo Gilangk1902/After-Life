@@ -171,12 +171,11 @@ public class HomePageFragment extends Fragment {
     }
 
     private void AddSession(){
-        UserHandler.test_getName(name_welcome);
-//        if(Session.getUser() != null){
-//            UserHandler.test_getName(name_welcome);
-//        }
-//        else{
-//            UserHandler.test_getName(name_welcome);
-//        }
+        if(Session.getUser() == null){
+            name_welcome.setText("Guest");
+        }
+        else{
+            name_welcome.setText(Session.getUser().getName());
+        }
     }
 }

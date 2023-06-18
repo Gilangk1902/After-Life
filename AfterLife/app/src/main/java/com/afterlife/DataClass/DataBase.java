@@ -26,7 +26,7 @@ public class DataBase {
 
     public static ArrayList<String> genderList = new ArrayList<>();
 
-    //TODO : Make Private dumbass
+    //TODO : Make Private
 
     public static boolean User_is_email_n_password_match(int position, EditText email, EditText password){
         if(userData.get(position).getEmail().equals(email.getText().toString())
