@@ -16,6 +16,8 @@ import com.afterlife.OtherScripts.CustomValidator;
 import com.afterlife.R;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.Random;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private TextView login_Here;
@@ -63,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isValid()){
-                    DataBase.userData.add(new User(name_EditText.getText().toString(),
+                    DataBase.userData.add(new User(CreateID(),name_EditText.getText().toString(),
                             email_EditText.getText().toString(), password_EditText.getText().toString(),
                             "https://placekitten.com/300/300", null, null, null,
                             null, null));
@@ -98,5 +100,14 @@ public class RegisterActivity extends AppCompatActivity {
         else{
             return false;
         }
+    }
+
+    public static String CreateID(){
+        String customer_code = "CS";
+        Random random = new Random();
+        int randomNumber = random.nextInt(10000);
+
+        String id = customer_code + String.format("%04d", randomNumber);
+        return id;
     }
 }

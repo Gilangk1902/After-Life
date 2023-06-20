@@ -12,6 +12,7 @@
     <color name="green_dark">#4B7C60</color>
     <color name="half_trans">#80FFFFFF</color>
     <color name="half_trans_green">#80609E7B</color>
+    <color name="half_trans_green2">#9FC5AF</color>
     <color name="orange_start">#FFD976</color>
     <color name="orange_end">#FF8947</color>
     <color name="background_color">#F6F6F6</color>

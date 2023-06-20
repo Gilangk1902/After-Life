@@ -14,12 +14,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afterlife.Activity.AddDeceasedActivity;
 import com.afterlife.Activity.LoginActivity;
+import com.afterlife.Activity.PaymentActivity;
 import com.afterlife.Adapters.CoffinsAdapter;
 import com.afterlife.Adapters.CountrySpinnerAdapter;
 import com.afterlife.Adapters.DeceasedSpinnerAdapter;
@@ -85,6 +87,7 @@ public class HomePageFragment extends Fragment {
     Spinner deceased_spinner;
 
     Button addmore_btn;
+    ImageButton cart_button;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -145,6 +148,8 @@ public class HomePageFragment extends Fragment {
         spinner.setAdapter(spinnerAdapter);
 
         addmore_btn = (Button) view.findViewById(R.id.addMore_Btn);
+
+        cart_button = view.findViewById(R.id.cart_button);
     }
 
     private void SetRecyclerView(RecyclerView recyclerView, LinearLayoutManager linearLayoutManager,
@@ -166,6 +171,13 @@ public class HomePageFragment extends Fragment {
                     Intent intent = new Intent(getActivity() , AddDeceasedActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
+        cart_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PaymentActivity.class);
+                startActivity(intent);
             }
         });
     }

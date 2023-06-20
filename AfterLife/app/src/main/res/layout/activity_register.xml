@@ -152,6 +152,7 @@
                 android:layout_width="292dp"
                 android:layout_height="40dp"
                 android:hint="Reenter your password"
+                android:inputType="textPassword"
                 android:paddingVertical="4dp" />
         </com.google.android.material.textfield.TextInputLayout>
 

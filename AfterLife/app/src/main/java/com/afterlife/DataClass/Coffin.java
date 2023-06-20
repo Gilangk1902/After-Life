@@ -3,28 +3,18 @@ package com.afterlife.DataClass;
 import java.util.ArrayList;
 
 public class Coffin extends Purchaseable{
-    private int price;
     private String detail;
     private String description;
     private ArrayList<String> size;
     private ArrayList<String> design;
 
-    public Coffin(Purchaseable purchaseable, int price, String detail, String description,
+    public Coffin(Purchaseable purchaseable, String detail, String description,
                   ArrayList<String> size, ArrayList<String> design) {
-        super(purchaseable.getName(), purchaseable.getRating(), purchaseable.getSold(), purchaseable.getUrl(),
+        super(purchaseable.getName(), purchaseable.getPrice(), purchaseable.getRating(), purchaseable.getSold(), purchaseable.getUrl(),
                 purchaseable.getLocation());
-        this.price = price;
         this.detail = detail;
         this.size = size;
         this.design = design;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public String getDetail() {

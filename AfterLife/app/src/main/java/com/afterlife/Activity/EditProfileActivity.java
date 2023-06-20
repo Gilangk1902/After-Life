@@ -58,7 +58,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
     private void ChangeUserAttributes(User user){
-        User newUser = new User(name.getText().toString(), email.getText().toString(),
+        User newUser = new User(user.getId(),name.getText().toString(), email.getText().toString(),
                 user.getPassword(), user.getProfilePic(), user.getAddresses(),
                 SIN.getText().toString(), religion.getSelectedItem().toString(),
                 gender.getSelectedItem().toString(), user.getDOB());

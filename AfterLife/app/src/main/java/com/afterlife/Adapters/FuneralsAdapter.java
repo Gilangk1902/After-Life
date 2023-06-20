@@ -59,7 +59,12 @@ public class FuneralsAdapter extends RecyclerView.Adapter<FuneralsAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return funeralsData.size();
+        if(funeralsData!=null){
+            return funeralsData.size();
+        }
+        else{
+            return 0;
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

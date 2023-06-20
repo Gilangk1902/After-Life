@@ -194,12 +194,13 @@
                     android:id="@+id/religion_icon"/>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:text="Religion Name"
                     android:textSize="9.33dp"
                     android:textColor="@color/white"
-                    android:id="@+id/religion_TextView"/>
+                    android:id="@+id/religion_TextView"
+                    android:layout_gravity="center_vertical"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

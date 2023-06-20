@@ -30,13 +30,11 @@ public class OtherAppliancesAdapter extends RecyclerView.Adapter<OtherAppliances
     public OtherAppliancesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.accesories_card_layout,
                 parent, false);
-
         return new OtherAppliancesAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull OtherAppliancesAdapter.ViewHolder holder, int position) {
-        // set value of holders
         holder.name.setText(other_appliances.get(position).getName());
         holder.location.setText(other_appliances.get(position).getLocation());
         Glide.with(context)
@@ -48,7 +46,12 @@ public class OtherAppliancesAdapter extends RecyclerView.Adapter<OtherAppliances
 
     @Override
     public int getItemCount() {
-        return other_appliances.size();
+        if(other_appliances!=null){
+            return other_appliances.size();
+        }
+        else{
+            return 0;
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

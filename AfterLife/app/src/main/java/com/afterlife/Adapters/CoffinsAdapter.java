@@ -49,7 +49,12 @@ public class CoffinsAdapter extends RecyclerView.Adapter<CoffinsAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return coffins.size();
+        if(coffins!=null){
+            return coffins.size();
+        }
+        else{
+            return 0;
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

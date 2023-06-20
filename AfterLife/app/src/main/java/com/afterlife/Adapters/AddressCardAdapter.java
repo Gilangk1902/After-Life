@@ -34,15 +34,22 @@ public class AddressCardAdapter extends RecyclerView.Adapter<AddressCardAdapter.
     @Override
     public void onBindViewHolder(@NonNull AddressCardAdapter.ViewHolder holder, int position) {
         //TODO : Bind Data
-        holder.address_title_TextView.setText(addresses.get(position).getAddressTitle());
-        holder.username_address_TextView.setText(addresses.get(position).getName());
-        holder.address_phoneNum_TextView.setText(addresses.get(position).getPhoneNumber());
-        holder.address_description_TextView.setText(addresses.get(position).getAddressDescription());
+        if(getItemCount()>0){
+            holder.address_title_TextView.setText(addresses.get(position).getAddressTitle());
+            holder.username_address_TextView.setText(addresses.get(position).getName());
+            holder.address_phoneNum_TextView.setText(addresses.get(position).getPhoneNumber());
+            holder.address_description_TextView.setText(addresses.get(position).getAddressDescription());
+        }
     }
 
     @Override
     public int getItemCount() {
-        return addresses.size();
+        if(addresses!=null){
+            return addresses.size();
+        }
+        else{
+            return 0;
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

@@ -164,7 +164,8 @@
                     android:layout_height="match_parent"
                     android:paddingVertical="4dp"
                     android:hint="Enter your Password"
-                    android:id="@+id/password_EditText_login"/>
+                    android:id="@+id/password_EditText_login"
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView

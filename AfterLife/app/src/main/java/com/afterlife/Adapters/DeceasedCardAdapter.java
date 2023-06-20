@@ -38,20 +38,25 @@ public class DeceasedCardAdapter extends RecyclerView.Adapter<DeceasedCardAdapte
 
     @Override
     public void onBindViewHolder(@NonNull DeceasedCardAdapter.ViewHolder holder, int position) {
-        holder.icon.setImageResource(IconSet
-                .setReligionIcon(deceasedList.get(position).getReligion().toString()));
-        holder.deceasedName.setText(deceasedList.get(position).getName());
-        holder.pendingMessage.setText(deceasedList.get(position).getDoc());
+        if(deceasedList!=null){
+            holder.icon.setImageResource(IconSet
+                    .setReligionIcon(deceasedList.get(position).getReligion().toString()));
+            holder.deceasedName.setText(deceasedList.get(position).getName());
+            holder.pendingMessage.setText(deceasedList.get(position).getDoc());
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        holder.liveSpan.setText(dateFormat.format(deceasedList.get(position).getDate_of_birth())
-                + " - " + dateFormat.format(deceasedList.get(position).getDate_of_death()));
-        holder.pendingMessage.setText(deceasedList.get(position).getDoc());
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            holder.liveSpan.setText(dateFormat.format(deceasedList.get(position).getDate_of_birth())
+                    + " - " + dateFormat.format(deceasedList.get(position).getDate_of_death()));
+            holder.pendingMessage.setText(deceasedList.get(position).getDoc());
+        }
     }
 
     @Override
     public int getItemCount() {
-        return deceasedList.size();
+        if(deceasedList!=null){
+            return deceasedList.size();
+        }
+        return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

@@ -8,10 +8,10 @@ public class Funeral extends Purchaseable{
 
     private ArrayList<String> features;
 
-    public Funeral(String name, float rating, String location, String religion,
+    public Funeral(String name, int price,float rating, String location, String religion,
                    int sold,String url, ArrayList<String> features)
     {
-        super(name, rating, sold, url, location);
+        super(name, price,rating, sold, url, location);
         this.religion = religion;
         this.features = features;
     }
