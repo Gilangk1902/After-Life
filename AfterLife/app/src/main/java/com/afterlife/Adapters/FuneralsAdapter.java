@@ -1,6 +1,7 @@
 package com.afterlife.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afterlife.DataClass.Funeral;
+import com.afterlife.DetailPageActivity;
 import com.afterlife.R;
 import com.bumptech.glide.Glide;
 
@@ -90,6 +92,17 @@ public class FuneralsAdapter extends RecyclerView.Adapter<FuneralsAdapter.ViewHo
             feature2_LinearLayout = itemView.findViewById(R.id.feature2_LinearLayout);
             feature3_LinearLayout = itemView.findViewById(R.id.feature3_LinearLayout);
             feature4_LinearLayout = itemView.findViewById(R.id.feature4_LinearLayout);
+
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Funeral funeral =  funeralsData.get(getAdapterPosition());
+
+                    Intent intent = new Intent(context, DetailPageActivity.class);
+                    intent.putExtra("funeral", funeral);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 

@@ -43,7 +43,6 @@
             android:id="@+id/min_Button"
             android:layout_width="30dp"
             android:layout_height="40dp"
-            android:src="@drawable/min"
             android:text="min"
             android:textSize="8dp"
             android:layout_marginLeft="17dp"

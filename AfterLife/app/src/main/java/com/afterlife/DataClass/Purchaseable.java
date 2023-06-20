@@ -1,6 +1,8 @@
 package com.afterlife.DataClass;
 
-public class Purchaseable {
+import java.io.Serializable;
+
+public class Purchaseable implements Serializable {
     private String name;
     private float rating;
     private int sold;

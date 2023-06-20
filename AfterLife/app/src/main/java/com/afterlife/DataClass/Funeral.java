@@ -31,6 +31,9 @@ public class Funeral extends Purchaseable{
     public void setReligion(String religion) {
         this.religion = religion;
     }
+    public ArrayList<String> getFeatures(){
+        return this.features;
+    }
 
     public String getFeature(int index){
         if(index < this.features.size())
