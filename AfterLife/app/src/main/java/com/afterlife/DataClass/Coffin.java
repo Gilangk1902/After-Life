@@ -10,8 +10,8 @@ public class Coffin extends Purchaseable{
 
     public Coffin(Purchaseable purchaseable, String detail, String description,
                   ArrayList<String> size, ArrayList<String> design) {
-        super(purchaseable.getName(), purchaseable.getPrice(), purchaseable.getRating(), purchaseable.getSold(), purchaseable.getUrl(),
-                purchaseable.getLocation());
+        super(purchaseable.getName(), purchaseable.getPrice(), purchaseable.getRating(),
+                purchaseable.getSold(), purchaseable.getUrl(), purchaseable.getLocation());
         this.detail = detail;
         this.size = size;
         this.design = design;

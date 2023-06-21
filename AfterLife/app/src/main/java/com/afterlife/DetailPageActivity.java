@@ -1,5 +1,6 @@
 package com.afterlife;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -32,6 +33,8 @@ public class DetailPageActivity extends AppCompatActivity {
 
         BindData(funeral);
         Listeners();
+
+        HideActionBar();
     }
 
     private void BindData(Funeral funeral){
@@ -60,6 +63,11 @@ public class DetailPageActivity extends AppCompatActivity {
                 Session.getUser().getCart().addItem(funeral);
             }
         });
+    }
+
+    private void HideActionBar(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
     }
 
 }

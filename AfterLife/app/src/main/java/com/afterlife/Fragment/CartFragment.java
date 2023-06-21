@@ -13,9 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.afterlife.Activity.MainActivity;
+import com.afterlife.Adapters.AddressSpinnerAdapter;
 import com.afterlife.Adapters.CartAdapter;
 import com.afterlife.Adapters.DeceasedSpinnerAdapter;
 import com.afterlife.Adapters.FuneralsAdapter;
@@ -57,12 +60,13 @@ public class CartFragment extends Fragment {
         }
     }
 
-    private Spinner deceasedSpinner;
+    private Spinner deceasedSpinner, addressSpinner;
     private RecyclerView cartRecyclerView;
     private DeceasedSpinnerAdapter deceasedSpinnerAdapter;
     private LinearLayoutManager cartLinearLayoutManager;
     private CartAdapter cartAdapter;
-    private Button back_Button;
+    private ImageButton back_Button;
+    private TextView total_price_TextView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,6 +79,7 @@ public class CartFragment extends Fragment {
         InitViews(view);
         InitAdapters();
         Listeners();
+        BindData();
     }
 
     public void Listeners(){
@@ -87,10 +92,29 @@ public class CartFragment extends Fragment {
         });
     }
 
+    private void BindData(){
+        total_price_TextView.setText("Rp. " + getTotalPrice());
+    }
+
     private void InitViews(View view){
         deceasedSpinner = view.findViewById(R.id.deceased_spinner_cart);
         cartRecyclerView = (RecyclerView) view.findViewById(R.id.cart_RecyclerView);
         back_Button = view.findViewById(R.id.back_button_cart);
+        addressSpinner = view.findViewById(R.id.address_spinner_cart);
+        AddressSpinnerAdapter addressSpinnerAdapter =
+                new AddressSpinnerAdapter(getContext(), R.layout.countries_spinner_layout,
+                        Session.getUser().getAddresses());
+        addressSpinner.setAdapter(addressSpinnerAdapter);
+        total_price_TextView = view.findViewById(R.id.total_price_TextView);
+    }
+
+    private int getTotalPrice(){
+        int total_price = 0;
+        for(int i=0;i<Session.getUser().getCart().getPurchaseables().size();i++){
+            total_price += Session.getUser().getCart().getPurchasable(i).getPrice() *
+                    Session.getUser().getCart().getQuantity(i);
+        }
+        return total_price;
     }
 
     private void InitAdapters(){

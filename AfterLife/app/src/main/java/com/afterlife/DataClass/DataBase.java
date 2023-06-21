@@ -51,7 +51,7 @@ public class DataBase {
     public static void DataInit() {
         funeralsData.add(new Funeral("Funeral Home Oasis Lestarti",
                 100,4.5f, "", "Christian", 34,
-                "https://placekitten.com/300/300",
+                "https://th.bing.com/th/id/R.b42e8b4492cd70f94986d08fbc15c7e9?rik=77Q4BgPbMPo1AA&riu=http%3A%2F%2Fwww.karanganbunga.net%2Fassets%2Fimg%2Fkarangan-bunga-meja-5.jpg&ehk=Bd9p80zFWOUEP9ZDI0Ew%2B1x3SCJKLAxQlZTlyhSzUL4%3D&risl=&pid=ImgRaw&r=0",
                 new ArrayList<String>(){
                     {
                         add("Mortuarium");
@@ -59,9 +59,9 @@ public class DataBase {
                         add("Crematorium");
                     }
                 }));
-        funeralsData.add(new Funeral("Funeral Home Oasis Lestarti",
+        funeralsData.add(new Funeral("Funeral Gaming",
                 100 ,4.5f, "", "Christian", 34,
-                "https://placekitten.com/300/300",
+                "https://3.bp.blogspot.com/-9LBHMISWdSw/VVi61YqUp-I/AAAAAAAAKo8/bn7SewfCoAg/s1600/IMG-20130702-01517.jpg",
                 new ArrayList<String>(){
                     {
                         add("Mortuarium");
